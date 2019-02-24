@@ -11,7 +11,7 @@ import {
 const customLinearProgressStyle = {
   root: {
     height: "4px",
-    marginBottom: "20px",
+    marginBottom: "5px",
     overflow: "hidden"
   },
   bar: {

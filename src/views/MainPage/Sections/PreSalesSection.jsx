@@ -4,7 +4,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import Card from "components/Card/Card.jsx";
 
-import imagesStyles from "assets/jss/material-kit-react/imagesStyles.jsx";
 
 import {cardTitle} from "assets/jss/material-kit-react.jsx";
 import CardBody from "../../../components/Card/CardBody";
@@ -14,6 +13,7 @@ import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 
 import workStyle from "assets/jss/material-kit-react/views/landingPageSections/workStyle.jsx";
+import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
 
 const style = {
   ...imagesStyles,
@@ -50,15 +50,17 @@ class PreSalesSection extends React.Component {
               />
               <CardBody>
                 <h4 className={classes.cardTitle}>방탄소년단 신규앨범</h4>
-                <p>총 토큰량 : 378,000개</p>
+                <div>총 토큰량 : 378,000개</div>
                 <p>남은 토큰량 : 0개 </p>
-                <Button color="primary">Buy</Button>
                 <CustomLinearProgress
                   variant="determinate"
                   color="danger"
                   value={100}
                 />
                 <p>100%</p>
+                <GridContainer justify="center">
+                  <Button color="primary" round>GET STARTED</Button>
+                </GridContainer>
               </CardBody>
             </Card>
           </GridItem>
@@ -72,15 +74,17 @@ class PreSalesSection extends React.Component {
               />
               <CardBody>
                 <h4 className={classes.cardTitle}>레인보우 콘서트</h4>
-                <p>총 토큰량 : 500,000개</p>
+                <div>총 토큰량 : 500,000개</div>
                 <p>남은 토큰량 : 378,000개 </p>
-                <Button color="primary">Buy</Button>
                 <CustomLinearProgress
                   variant="determinate"
                   color="success"
                   value={25}
                 />
-                <p>25%</p>
+                <div>25%</div>
+                <GridContainer justify="center">
+                  <Button color="primary" round>GET STARTED</Button>
+                </GridContainer>
               </CardBody>
             </Card>
           </GridItem>
@@ -94,15 +98,17 @@ class PreSalesSection extends React.Component {
               />
               <CardBody>
                 <h4 className={classes.cardTitle}>라붐 뮤직비디오(4분30초)</h4>
-                <p>총 토큰량 : 400,000개</p>
+                <div>총 토큰량 : 400,000개</div>
                 <p>남은 토큰량 : 378,000개 </p>
-                <Button color="primary">Buy</Button>
                 <CustomLinearProgress
                   variant="determinate"
                   color="success"
                   value={5}
                 />
                 <p>5%</p>
+                <GridContainer justify="center">
+                  <Button color="primary" round>GET STARTED</Button>
+                </GridContainer>
               </CardBody>
             </Card>
           </GridItem>

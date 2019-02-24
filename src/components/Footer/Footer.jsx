@@ -28,15 +28,6 @@ function Footer({ ...props }) {
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a
-                href="https://www.creative-tim.com/"
-                className={classes.block}
-                target="_blank"
-              >
-                Creative Tim
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a
                 href="https://www.creative-tim.com/presentation"
                 className={classes.block}
                 target="_blank"
@@ -67,14 +58,7 @@ function Footer({ ...props }) {
         <div className={classes.right}>
           &copy; {1900 + new Date().getYear()} , made with{" "}
           <Favorite className={classes.icon} /> by{" "}
-          <a
-            href="https://www.creative-tim.com"
-            className={aClasses}
-            target="_blank"
-          >
-            Creative Tim
-          </a>{" "}
-          for a better web.
+          Makestar DevTeam
         </div>
       </div>
     </footer>

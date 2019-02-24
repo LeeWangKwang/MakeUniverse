@@ -9,7 +9,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 // @material-ui/icons
-import { Apps, AttachMoney, Build } from "@material-ui/icons";
+import { Apps, AttachMoney, Build, Person, QuestionAnswerRounded } from "@material-ui/icons";
 
 // core components
 import Button from "components/CustomButtons/Button.jsx";
@@ -38,6 +38,25 @@ function NewHeaderLinks({ ...props }) {
           className={classes.navLink}
         >
           <Build className={classes.icons} /> How it works
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href="https://www.creative-tim.com/product/material-kit-react"
+          color="transparent"
+          target="_blank"
+          className={classes.navLink}
+        >
+          <QuestionAnswerRounded className={classes.icons} /> FAQ
+        </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Button
+          href='/login-page'
+          color="transparent"
+          className={classes.navLink}
+        >
+          <Person className={classes.icons} /> LOGIN
         </Button>
       </ListItem>
     </List>

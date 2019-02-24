@@ -11,9 +11,9 @@ import Link from "@material-ui/icons/Link"
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import InfoArea from "components/InfoArea/InfoArea.jsx";
+import productStyle from "../../../assets/jss/material-kit-react/views/landingPageSections/productStyle";
+import InfoArea from "../../../components/InfoArea/InfoArea";
 
-import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
 class ProductSection extends React.Component {
   render() {

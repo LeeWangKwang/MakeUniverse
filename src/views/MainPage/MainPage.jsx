@@ -1,19 +1,18 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PreSalesSection from "./Sections/PreSalesSection";
 import MainChartSection from "./Sections/MainChartSection";
 import Header from "../../components/Header/Header";
 import Parallax from "../../components/Parallax/Parallax";
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
-import Button from "../../components/CustomButtons/Button";
 
-import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
 import withStyles from "@material-ui/core/styles/withStyles";
 import classNames from "classnames";
 import Footer from "../../components/Footer/Footer";
-import WorkSection from "../LandingPage/Sections/WorkSection";
 import ProductSection from "../LandingPage/Sections/ProductSection";
 import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
+import landingPageStyle from "../../assets/jss/material-kit-react/views/landingPage";
+import ContactUsSection from "./Sections/ContactUsSection";
 
 class MainPage extends React.Component {
 
@@ -39,7 +38,7 @@ class MainPage extends React.Component {
           <div className={classes.container}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classes.title}>Your Story Starts With Us.</h1>
+                <h1 className={classes.title}>BTS NEW ALBUM</h1>
                 <h4>
                   Every landing page needs a small description after the big
                   bold title, that's why we added this text here. Add here all
@@ -47,16 +46,6 @@ class MainPage extends React.Component {
                   first impression.
                 </h4>
                 <br />
-                <Button
-                  color="danger"
-                  size="lg"
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fas fa-play" />
-                  Watch video
-                </Button>
               </GridItem>
             </GridContainer>
           </div>
@@ -66,8 +55,16 @@ class MainPage extends React.Component {
           <div className={classes.container}>
             <PreSalesSection />
             <MainChartSection/>
-            <ProductSection />
-            <WorkSection />
+          </div>
+        </div>
+
+        <div>
+          <ProductSection />
+        </div>
+
+        <div className={classNames(classes.main)}>
+          <div className={classes.container}>
+            <ContactUsSection />
           </div>
         </div>
         <Footer />

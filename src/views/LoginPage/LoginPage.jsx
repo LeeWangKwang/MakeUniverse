@@ -7,7 +7,6 @@ import Icon from "@material-ui/core/Icon";
 import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
 // core components
-import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -22,6 +21,8 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/bg7.jpg";
+import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
+import Header from "../../components/Header/Header";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -47,8 +48,8 @@ class LoginPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand="Material Kit React"
-          rightLinks={<HeaderLinks />}
+          brand="makeUNIVERSE"
+          rightLinks={<NewHeaderLinks />}
           {...rest}
         />
         <div
