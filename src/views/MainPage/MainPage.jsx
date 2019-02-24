@@ -1,40 +1,33 @@
-import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-
-// @material-ui/icons
-
-// core components
-import Header from "components/Header/Header.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
+import React, {Fragment} from 'react';
+import PreSalesSection from "./Sections/PreSalesSection";
+import MainChartSection from "./Sections/MainChartSection";
+import Header from "../../components/Header/Header";
+import Parallax from "../../components/Parallax/Parallax";
+import GridContainer from "../../components/Grid/GridContainer";
+import GridItem from "../../components/Grid/GridItem";
+import Button from "../../components/CustomButtons/Button";
 
 import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
+import withStyles from "@material-ui/core/styles/withStyles";
+import classNames from "classnames";
+import Footer from "../../components/Footer/Footer";
+import WorkSection from "../LandingPage/Sections/WorkSection";
+import ProductSection from "../LandingPage/Sections/ProductSection";
+import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 
-// Sections for this page
-import ProductSection from "./Sections/ProductSection.jsx";
-import TeamSection from "./Sections/TeamSection.jsx";
-import WorkSection from "./Sections/WorkSection.jsx";
+class MainPage extends React.Component {
 
-const dashboardRoutes = [];
-
-class LandingPage extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
-    console.log(classes)
+
+    const dashboardRoutes = [];
     return (
       <div>
         <Header
           color="transparent"
           routes={dashboardRoutes}
-          brand="Material Kit React"
-          rightLinks={<HeaderLinks />}
+          brand="makeUNIVERSE"
+          rightLinks={<NewHeaderLinks />}
           fixed
           changeColorOnScroll={{
             height: 400,
@@ -68,17 +61,20 @@ class LandingPage extends React.Component {
             </GridContainer>
           </div>
         </Parallax>
-        <div className={classNames(classes.main, classes.mainRaised)}>
+
+        <div className={classNames(classes.main)}>
           <div className={classes.container}>
+            <PreSalesSection />
+            <MainChartSection/>
             <ProductSection />
-            <TeamSection />
             <WorkSection />
           </div>
         </div>
         <Footer />
+
       </div>
     );
   }
 }
 
-export default withStyles(landingPageStyle)(LandingPage);
+export default withStyles(landingPageStyle)(MainPage);
