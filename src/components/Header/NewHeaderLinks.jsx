@@ -9,7 +9,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 // @material-ui/icons
-import { Apps, CloudDownload, Home } from "@material-ui/icons";
+import { Apps, AttachMoney, Build } from "@material-ui/icons";
 
 // core components
 import Button from "components/CustomButtons/Button.jsx";
@@ -27,7 +27,7 @@ function NewHeaderLinks({ ...props }) {
           target="_blank"
           className={classes.navLink}
         >
-          <CloudDownload className={classes.icons} /> Pre-sale
+          <AttachMoney className={classes.icons} /> Pre-sale
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
@@ -37,7 +37,7 @@ function NewHeaderLinks({ ...props }) {
           target="_blank"
           className={classes.navLink}
         >
-          <Home className={classes.icons} /> How it works
+          <Build className={classes.icons} /> How it works
         </Button>
       </ListItem>
     </List>

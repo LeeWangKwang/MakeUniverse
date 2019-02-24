@@ -71,16 +71,16 @@ class PreSalesSection extends React.Component {
                 alt="Card-img-cap"
               />
               <CardBody>
-                <h4 className={classes.cardTitle}>방탄소년단 신규앨범</h4>
+                <h4 className={classes.cardTitle}>레인보우 콘서트</h4>
                 <p>총 토큰량 : 500,000개</p>
                 <p>남은 토큰량 : 378,000개 </p>
                 <Button color="primary">Buy</Button>
                 <CustomLinearProgress
                   variant="determinate"
                   color="success"
-                  value={75}
+                  value={25}
                 />
-                <p>75%</p>
+                <p>25%</p>
               </CardBody>
             </Card>
           </GridItem>
@@ -100,9 +100,9 @@ class PreSalesSection extends React.Component {
                 <CustomLinearProgress
                   variant="determinate"
                   color="success"
-                  value={95}
+                  value={5}
                 />
-                <p>95%</p>
+                <p>5%</p>
               </CardBody>
             </Card>
           </GridItem>
