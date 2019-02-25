@@ -13,6 +13,8 @@ import ProductSection from "../LandingPage/Sections/ProductSection";
 import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import landingPageStyle from "../../assets/jss/material-kit-react/views/landingPage";
 import ContactUsSection from "./Sections/ContactUsSection";
+import PartnerSection from "./Sections/PartnerSection";
+import TeamSection from "./Sections/TeamSection";
 
 class MainPage extends React.Component {
 
@@ -63,10 +65,17 @@ class MainPage extends React.Component {
         </div>
 
         <div className={classNames(classes.main)}>
+          <PartnerSection />
+          <TeamSection/>
+        </div>
+
+
+        <div className={classNames(classes.main)}>
           <div className={classes.container}>
             <ContactUsSection />
           </div>
         </div>
+
         <Footer />
 
       </div>
