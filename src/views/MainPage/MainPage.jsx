@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PreSalesSection from "./Sections/PreSalesSection";
 import MainChartSection from "./Sections/MainChartSection";
 import Header from "../../components/Header/Header";
@@ -17,7 +17,6 @@ import PartnerSection from "./Sections/PartnerSection";
 import TeamSection from "./Sections/TeamSection";
 
 class MainPage extends React.Component {
-
   render() {
     const { classes, ...rest } = this.props;
 
@@ -56,7 +55,7 @@ class MainPage extends React.Component {
         <div className={classNames(classes.main)}>
           <div className={classes.container}>
             <PreSalesSection />
-            <MainChartSection/>
+            <MainChartSection />
           </div>
         </div>
 
@@ -66,9 +65,8 @@ class MainPage extends React.Component {
 
         <div className={classNames(classes.main)}>
           <PartnerSection />
-          <TeamSection/>
+          {/* <TeamSection /> */}
         </div>
-
 
         <div className={classNames(classes.main)}>
           <div className={classes.container}>
@@ -77,7 +75,6 @@ class MainPage extends React.Component {
         </div>
 
         <Footer />
-
       </div>
     );
   }
