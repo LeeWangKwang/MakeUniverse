@@ -9,7 +9,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 // @material-ui/icons
-import { Apps, AttachMoney, Build, Person, QuestionAnswerRounded } from "@material-ui/icons";
+import {
+  Apps,
+  AttachMoney,
+  Build,
+  Person,
+  QuestionAnswerRounded
+} from "@material-ui/icons";
 
 // core components
 import Button from "components/CustomButtons/Button.jsx";
@@ -51,13 +57,9 @@ function NewHeaderLinks({ ...props }) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          href='/login-page'
-          color="transparent"
-          className={classes.navLink}
-        >
+        <Link to="/login-page" color="transparent" className={classes.navLink}>
           <Person className={classes.icons} /> LOGIN
-        </Button>
+        </Link>
       </ListItem>
     </List>
   );
