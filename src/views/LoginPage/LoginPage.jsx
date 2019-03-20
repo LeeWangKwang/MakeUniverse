@@ -23,6 +23,7 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 import image from "assets/img/bg7.jpg";
 import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import Header from "../../components/Header/Header";
+import {Link} from "react-router-dom";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -97,23 +98,7 @@ class LoginPage extends React.Component {
                         </Button>
                       </div>
                     </CardHeader>
-                    <p className={classes.divider}>Or Be Classical</p>
                     <CardBody>
-                      <CustomInput
-                        labelText="First Name..."
-                        id="first"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "text",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <People className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          )
-                        }}
-                      />
                       <CustomInput
                         labelText="Email..."
                         id="email"
@@ -148,9 +133,18 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
-                        Get started
-                      </Button>
+                      <GridItem xs={6} >
+                        <Button simple color="primary" size="lg">
+                          Get started
+                        </Button>
+                      </GridItem>
+                      <GridItem xs={6} >
+                        <Link to="/signUp-page" color="transparent" className={classes.navLink}>
+                          <Button simple color="primary" size="lg">
+                            Sign Up
+                          </Button>
+                        </Link>
+                      </GridItem>
                     </CardFooter>
                   </form>
                 </Card>
