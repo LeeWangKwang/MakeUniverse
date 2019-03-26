@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import classNames from "classnames";
+import React from "react";
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
@@ -7,7 +6,6 @@ import Card from "components/Card/Card.jsx";
 
 import { cardTitle } from "assets/jss/material-kit-react.jsx";
 import CardBody from "../../../components/Card/CardBody";
-import CustomLinearProgress from "../../../components/CustomLinearProgress/CustomLinearProgress";
 import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 
@@ -15,14 +13,6 @@ import workStyle from "assets/jss/material-kit-react/views/landingPageSections/w
 import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
 import Typography from "@material-ui/core/Typography/Typography";
 import projectPageStyle from "../../../assets/jss/material-kit-react/views/projectPage";
-import TextField from "@material-ui/core/TextField/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-import Button from "@material-ui/core/Button/Button";
-import Dialog from "@material-ui/core/Dialog/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Hidden from "@material-ui/core/Hidden/Hidden";
 
 const style = {

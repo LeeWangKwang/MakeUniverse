@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import classNames from "classnames";
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -15,15 +15,9 @@ import workStyle from "assets/jss/material-kit-react/views/landingPageSections/w
 import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
 import Typography from "@material-ui/core/Typography/Typography";
 import projectPageStyle from "../../../assets/jss/material-kit-react/views/projectPage";
-import UpIcon from '@material-ui/icons/ArrowDropUp';
-import DownIcon from '@material-ui/icons/ArrowDropDown';
-import IconButton from "@material-ui/core/IconButton/IconButton";
 import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import Button from "@material-ui/core/Button/Button";
-import FormControl from "@material-ui/core/FormControl/FormControl";
-import InputLabel from "@material-ui/core/InputLabel/InputLabel";
-import Input from "@material-ui/core/Input/Input";
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
@@ -39,7 +33,6 @@ const style = {
 
 class ContentSection extends React.Component {
   state = {
-    amount: 0,
     quantity: 1,
     price: 10000,
     open: false,
@@ -56,22 +49,10 @@ class ContentSection extends React.Component {
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
-  handleUpChange = () => {
-    this.setState({ quantity:this.state.quantity+1 });
-  };
-
-  handleDownChange = () => {
-    if(this.state.quantity -1 < 0 ){
-
-    }else
-    this.setState({ quantity:this.state.quantity-1 });
-  };
   render() {
     const { classes } = this.props;
-    const { quantity, amount, price } = this.state;
+    const { quantity, price } = this.state;
 
-    console.log(quantity)
-    console.log(price)
     return (
         <div className={classes.section}>
           <div>

@@ -65,7 +65,7 @@ const projectPageStyle = {
     textAlign: "right",
   },
   middleInfo : {
-    padding: "0 15px 0"
+    padding: "0 15px 30px"
   },
 };
 

@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
+import ChartistGraph from 'react-chartist';
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
@@ -11,7 +12,6 @@ import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 import Typography from "@material-ui/core/Typography/Typography";
 import FormControl from "@material-ui/core/FormControl/FormControl";
-import FormLabel from "@material-ui/core/FormLabel/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel/FormControlLabel";
 import Radio from "@material-ui/core/Radio/Radio";
@@ -21,6 +21,10 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import Dialog from "@material-ui/core/Dialog/Dialog";
+
+var Chartist = require("chartist");
+var delays = 80,
+    durations = 500;
 
 const style = {
   ...imagesStyles,
@@ -48,6 +52,55 @@ class MiddleInformationSection extends React.Component {
 
   render() {
     const { classes } = this.props;
+
+    let data = {
+      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+      series: [
+        [60, 151, 147, 45, 35, 37, 80, 19, 22, 55, 78, 57]
+      ]
+    };
+
+    let options = {
+      high: 200,
+      low: 0,
+      axisX: {
+        labelInterpolationFnc: function(value, index) {
+          return value;
+        }
+      }
+    };
+    let type = 'Bar'
+
+    var animation = {
+      draw: function(data) {
+        if (data.type === "line" || data.type === "area") {
+          data.element.animate({
+            d: {
+              begin: 600,
+              dur: 700,
+              from: data.path
+                  .clone()
+                  .scale(1, 0)
+                  .translate(0, data.chartRect.height())
+                  .stringify(),
+              to: data.path.clone().stringify(),
+              easing: Chartist.Svg.Easing.easeOutQuint
+            }
+          });
+        } else if (data.type === "point") {
+          data.element.animate({
+            opacity: {
+              begin: (data.index + 1) * delays,
+              dur: durations,
+              from: 0,
+              to: 1,
+              easing: "ease"
+            }
+          });
+        }
+      }
+    }
+
     return (
         <div className={classes.middleInfo}>
           <GridContainer>
@@ -114,7 +167,7 @@ class MiddleInformationSection extends React.Component {
                   />
                 </RadioGroup>
                 <Button variant="contained" size="medium" color="primary" className={classes.button} onClick={this.handleClickOpen}>
-                  권력 행사
+                  투표
                 </Button>
                 <Dialog
                     open={this.state.open}
@@ -122,10 +175,10 @@ class MiddleInformationSection extends React.Component {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                  <DialogTitle id="alert-dialog-title">{"권력 행사"}</DialogTitle>
+                  <DialogTitle id="alert-dialog-title">{"투표"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                      선택된 항목에 대하여 가지신 지분만큼 권력을 행사하시겠습니까?
+                      투표하시겠습니까?
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
@@ -144,6 +197,7 @@ class MiddleInformationSection extends React.Component {
               <Typography variant ="h6" component="h3">
                 Digital Asset Revenue
               </Typography>
+              <ChartistGraph data={data} options={options} type={type} listener={animation} />
             </GridItem>
           </GridContainer>
         </div>

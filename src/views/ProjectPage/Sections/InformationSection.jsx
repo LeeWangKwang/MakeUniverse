@@ -51,7 +51,7 @@ class NavTabs extends React.Component {
         <NoSsr>
           <div className={classes.root}>
             <AppBar position="static" color="default">
-              <Tabs variant="fullWidth" variant="scrollable" scrollButtons="auto" value={value} onChange={this.handleChange}>
+              <Tabs variant="scrollable" scrollButtons="auto" value={value} onChange={this.handleChange}>
                 <LinkTab label="Graph Analysis" href="page1" />
                 <LinkTab label="Detail" href="page2" />
                 <LinkTab label="Membership" href="page3" />

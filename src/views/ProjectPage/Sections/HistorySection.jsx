@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components

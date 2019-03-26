@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
@@ -12,7 +12,6 @@ import TableHead from "@material-ui/core/TableHead/TableHead";
 import TableRow from "@material-ui/core/TableRow/TableRow";
 import TableCell from "@material-ui/core/TableCell/TableCell";
 import TableBody from "@material-ui/core/TableBody/TableBody";
-import Paper from "@material-ui/core/Paper/Paper";
 
 const style = {
   ...imagesStyles,

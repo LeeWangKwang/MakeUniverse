@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import imagesStyles from "assets/jss/material-kit-react/imagesStyles.jsx";
 
@@ -32,7 +32,7 @@ class MainChartSection extends React.Component {
               </h5>
             </GridItem>
           </GridContainer>
-          <img style={{width:"100%"}} src={chart}/>
+          <img style={{width:"100%"}} src={chart} alt={"main chart"}/>
         </div>
     );
   }
