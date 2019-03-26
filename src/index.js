@@ -13,6 +13,7 @@ import LoginPage from "views/LoginPage/LoginPage.jsx";
 import MainPage from "views/MainPage/MainPage.jsx";
 import SignUpPage from "./views/SignUpPage/SignUpPage";
 import KycPage from "./views/SignUpPage/KycPage";
+import ProjectPage from "./views/ProjectPage/ProjectPage";
 
 const hist = createBrowserHistory();
 
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route path="/login-page" component={LoginPage} />
       <Route path="/signUp-page" component={SignUpPage} />
       <Route path="/kyc-page" component={KycPage} />
+      <Route path="/project" component={ProjectPage} />
       {/* <Route path="/main" component={MainPage} /> */}
       <Route path="/" component={MainPage} />
     </Switch>

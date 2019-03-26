@@ -10,6 +10,7 @@ import Button from "../../../components/CustomButtons/Button";
 import CustomLinearProgress from "../../../components/CustomLinearProgress/CustomLinearProgress";
 import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
+import { Link } from 'react-router-dom'
 
 import workStyle from "assets/jss/material-kit-react/views/landingPageSections/workStyle.jsx";
 import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
@@ -58,7 +59,7 @@ class PreSalesSection extends React.Component {
                   />
                   <p>100%</p>
                   <GridContainer justify="center">
-                    <Button color="primary" round>
+                    <Button component={Link} to="/project"  color="primary" round>
                       GET STARTED
                     </Button>
                   </GridContainer>
@@ -84,7 +85,7 @@ class PreSalesSection extends React.Component {
                   />
                   <div>25%</div>
                   <GridContainer justify="center">
-                    <Button color="primary" round>
+                    <Button component={Link} to="/project"  color="primary" round>
                       GET STARTED
                     </Button>
                   </GridContainer>
@@ -112,7 +113,7 @@ class PreSalesSection extends React.Component {
                   />
                   <p>5%</p>
                   <GridContainer justify="center">
-                    <Button color="primary" round>
+                    <Button component={Link} to="/project" color="primary" round className={classes.button}>
                       GET STARTED
                     </Button>
                   </GridContainer>
