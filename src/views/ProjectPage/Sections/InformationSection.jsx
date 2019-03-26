@@ -6,6 +6,10 @@ import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import GraphAnalysisSection from "./GraphAnalysisSection";
+import DetailSection from "./DetailSection";
+import MembershipSection from "./MembershipSection";
+import HistorySection from "./HistorySection";
 
 function InformationSection(props) {
   return (
@@ -47,18 +51,18 @@ class NavTabs extends React.Component {
         <NoSsr>
           <div className={classes.root}>
             <AppBar position="static" color="default">
-              <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
+              <Tabs variant="fullWidth" variant="scrollable" scrollButtons="auto" value={value} onChange={this.handleChange}>
                 <LinkTab label="Graph Analysis" href="page1" />
                 <LinkTab label="Detail" href="page2" />
                 <LinkTab label="Membership" href="page3" />
+                <LinkTab label="My History" href="page4" />
               </Tabs>
             </AppBar>
-            {value === 0 && <InformationSection>그래프 분석 결과가 보여질 예정입니다.</InformationSection>}
-            {value === 1 && <InformationSection>앨범 정보 <br/><br/>방탄소년단, LOVE YOURSELF 結 ‘Answer’ 발표! “팬들과의 축제” 시작<br/>
-              LOVE YOURSELF 모든 비밀이 드러나다! ‘진정한 사랑은 나 자신을 사랑하는 것부터’<br/>
-              타이틀곡 ‘IDOL’, 방탄소년단이 보여주는 ‘문화적 하이브리드’<br/><br/>
-            앨범 수록곡 정보들이 나올 예정입니다.</InformationSection>}
-            {value === 2 && <InformationSection>멤버십 혜택이 보여질 예정입니다.</InformationSection>}
+            {value === 0 && <InformationSection><GraphAnalysisSection/></InformationSection>}
+            {value === 1 && <InformationSection><DetailSection/></InformationSection>}
+            {value === 2 && <InformationSection><MembershipSection/></InformationSection>}
+            {/*My history는 로그인 시에만 보이게*/}
+            {value === 3 && <InformationSection><HistorySection/></InformationSection>}
           </div>
         </NoSsr>
     );

@@ -9,6 +9,7 @@ import MainChartSection from "../MainPage/Sections/MainChartSection";
 import projectPageStyle from "../../assets/jss/material-kit-react/views/projectPage";
 import ContentSection from "./Sections/ContentSection";
 import InformationSection from "./Sections/InformationSection";
+import Footer from "../../components/Footer/Footer";
 
 class ProjectPage extends React.Component {
   render() {
@@ -35,6 +36,7 @@ class ProjectPage extends React.Component {
               <InformationSection/>
             </div>
           </div>
+          <Footer />
         </div>
     );
   }

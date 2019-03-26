@@ -24,6 +24,11 @@ import Button from "@material-ui/core/Button/Button";
 import FormControl from "@material-ui/core/FormControl/FormControl";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Input from "@material-ui/core/Input/Input";
+import Dialog from "@material-ui/core/Dialog/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 
 const style = {
   ...imagesStyles,
@@ -37,6 +42,15 @@ class ContentSection extends React.Component {
     amount: 0,
     quantity: 1,
     price: 10000,
+    open: false,
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
   };
 
   handleChange = prop => event => {
@@ -150,9 +164,30 @@ class ContentSection extends React.Component {
                             startAdornment: <InputAdornment style={{textAlign : "right"}} position="start"></InputAdornment>
                           }}
                       />
-                      <Button variant="contained" size="large" color="primary" className={classes.button}>
+                      <Button variant="contained" size="large" color="primary" className={classes.button} onClick={this.handleClickOpen}>
                         Buy
                       </Button>
+                      <Dialog
+                          open={this.state.open}
+                          onClose={this.handleClose}
+                          aria-labelledby="alert-dialog-title"
+                          aria-describedby="alert-dialog-description"
+                      >
+                        <DialogTitle id="alert-dialog-title">{"BTS NEW ALBUM을 구매"}</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText id="alert-dialog-description">
+                            구매하시려는 개수가 {quantity}개가 맞습니까?
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={this.handleClose} color="primary">
+                            No
+                          </Button>
+                          <Button onClick={this.handleClose} color="primary" autoFocus>
+                            Yes
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                     </GridItem>
                     </GridContainer>
                   </CardBody>
