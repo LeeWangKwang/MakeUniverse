@@ -50,6 +50,23 @@ const projectPageStyle = {
   inputField: {
     textAlign:"right",
   },
+  info: {
+    margin : "0 0 15px"
+  },
+  type : {
+    width:"50%",
+    float:"left",
+    marginTop:"5px",
+  },
+  typeValue : {
+    width:"50%",
+    float:"right",
+    marginTop:"5px",
+    textAlign: "right",
+  },
+  middleInfo : {
+    padding: "0 15px 0"
+  },
 };
 
 export default projectPageStyle;

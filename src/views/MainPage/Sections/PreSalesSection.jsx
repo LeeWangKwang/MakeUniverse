@@ -85,7 +85,7 @@ class PreSalesSection extends React.Component {
                   />
                   <div>25%</div>
                   <GridContainer justify="center">
-                    <Button component={Link} to="/project"  color="primary" round>
+                    <Button component={Link} to="/closed-project"  color="primary" round>
                       GET STARTED
                     </Button>
                   </GridContainer>

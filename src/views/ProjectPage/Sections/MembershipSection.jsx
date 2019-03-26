@@ -20,7 +20,7 @@ class MembershipSection extends React.Component {
     const { classes } = this.props;
     return (
         <div>
-          <h3>#가입혜택</h3><br/><br/>
+          <h3>#구매혜택</h3>
           공개방송 우선 입장 기회 제공<br/>
           BTS 팬미팅, 단독콘서트, 이벤트 선예매 기회 제공<br/>
           BTS 공식 팬카페 정회원 대상 우수회원 등급 조정<br/>
