@@ -87,6 +87,9 @@ const loginPageStyle = {
   },
   img : {
     width: "100%"
+  },
+  cardContainer:{
+    paddingBottom : "150px"
   }
 };
 
