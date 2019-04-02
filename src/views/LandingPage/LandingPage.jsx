@@ -27,7 +27,6 @@ const dashboardRoutes = [];
 class LandingPage extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
-    console.log(classes)
     return (
       <div>
         <Header
