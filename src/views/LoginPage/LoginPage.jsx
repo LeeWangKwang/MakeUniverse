@@ -28,7 +28,10 @@ class LoginPage extends React.Component {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      apiResponse: "",
+      email:'shane0531@gmail.com',
+      password:'',
     };
   }
   componentDidMount() {
@@ -40,8 +43,22 @@ class LoginPage extends React.Component {
       700
     );
   }
+  callAPI(userId){
+    fetch("http://localhost:8808/users/"+userId)
+        .then(res => res.text())
+        .then(res => this.setState({apiResponse:res}));
+  }
+
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
   render() {
     const { classes, ...rest } = this.props;
+
+    console.log(this.state.apiResponse)
     return (
       <div>
         <Header
@@ -118,6 +135,7 @@ class LoginPage extends React.Component {
                         formControlProps={{
                           fullWidth: true
                         }}
+                        onChange={this.handleChange('password')}
                         inputProps={{
                           type: "password",
                           endAdornment: (
@@ -132,7 +150,9 @@ class LoginPage extends React.Component {
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
                       <GridItem xs={6} >
-                        <Button simple color="primary" size="lg">
+                        <Button simple color="primary" size="lg" onClick={() => {
+                          this.callAPI(this.state.email)
+                        }}>
                           Get started
                         </Button>
                       </GridItem>
