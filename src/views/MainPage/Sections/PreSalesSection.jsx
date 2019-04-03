@@ -10,10 +10,11 @@ import Button from "../../../components/CustomButtons/Button";
 import CustomLinearProgress from "../../../components/CustomLinearProgress/CustomLinearProgress";
 import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import workStyle from "assets/jss/material-kit-react/views/landingPageSections/workStyle.jsx";
 import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
+import * as apiClient from "../../../apiClient";
 
 const style = {
   ...imagesStyles,
@@ -21,9 +22,56 @@ const style = {
   ...workStyle
 };
 
+const Item = props => {
+  const { album_img, data_value, total_token, remain_token, classes } = props;
+  let percent;
+  if (remain_token == 0) percent = 100;
+  else percent = parseInt(total_token / remain_token);
+  return (
+    <GridItem xs={12} md={4}>
+      <Card>
+        <img
+          style={{ width: "100%", display: "block" }}
+          className={classes.imgCardTop}
+          src={album_img}
+          alt="Card-img-cap"
+        />
+        <CardBody>
+          <h4 className={classes.cardTitle}>{data_value}</h4>
+          <div>Total Token : {total_token}</div>
+          <p>Remain Token : {remain_token} </p>
+          <CustomLinearProgress
+            variant="determinate"
+            color="danger"
+            value={percent}
+          />
+          <p>{percent}%</p>
+          <GridContainer justify="center">
+            <Button component={Link} to="/project" color="primary" round>
+              GET STARTED
+            </Button>
+          </GridContainer>
+        </CardBody>
+      </Card>
+    </GridItem>
+  );
+};
+
 class PreSalesSection extends React.Component {
+  state = {
+    projects: []
+  };
+
+  componentDidMount() {
+    apiClient.get(`/presales/get`, null, res => {
+      this.setState({ projects: res.Items });
+    });
+  }
+
   render() {
     const { classes } = this.props;
+    const { projects } = this.state;
+    console.log(projects);
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
@@ -40,86 +88,9 @@ class PreSalesSection extends React.Component {
         </GridContainer>
         <div>
           <GridContainer>
-            <GridItem xs={12} md={4}>
-              <Card>
-                <img
-                  style={{ width: "100%", display: "block" }}
-                  className={classes.imgCardTop}
-                  src="https://saluki.codechain.io/console/imgs/ab233b6e5143e64438622274d7386c78.PNG"
-                  alt="Card-img-cap"
-                />
-                <CardBody>
-                  <h4 className={classes.cardTitle}>방탄소년단 신규앨범</h4>
-                  <div>총 토큰량 : 378,000개</div>
-                  <p>남은 토큰량 : 0개 </p>
-                  <CustomLinearProgress
-                    variant="determinate"
-                    color="danger"
-                    value={100}
-                  />
-                  <p>100%</p>
-                  <GridContainer justify="center">
-                    <Button component={Link} to="/project"  color="primary" round>
-                      GET STARTED
-                    </Button>
-                  </GridContainer>
-                </CardBody>
-              </Card>
-            </GridItem>
-            <GridItem xs={12} md={4}>
-              <Card>
-                <img
-                  style={{ width: "100%", display: "block" }}
-                  className={classes.imgCardTop}
-                  src="https://saluki.codechain.io/console/imgs/f94deb6d9aa20d1ddf21164f722e14b6.PNG"
-                  alt="Card-img-cap"
-                />
-                <CardBody>
-                  <h4 className={classes.cardTitle}>레인보우 콘서트</h4>
-                  <div>총 토큰량 : 500,000개</div>
-                  <p>남은 토큰량 : 378,000개 </p>
-                  <CustomLinearProgress
-                    variant="determinate"
-                    color="success"
-                    value={25}
-                  />
-                  <div>25%</div>
-                  <GridContainer justify="center">
-                    <Button component={Link} to="/closed-project"  color="primary" round>
-                      GET STARTED
-                    </Button>
-                  </GridContainer>
-                </CardBody>
-              </Card>
-            </GridItem>
-            <GridItem xs={12} md={4}>
-              <Card>
-                <img
-                  style={{ width: "100%", display: "block" }}
-                  className={classes.imgCardTop}
-                  src="	https://saluki.codechain.io/console/imgs/b87908cbb7803ab4d8b4111dd4d4c863.PNG"
-                  alt="Card-img-cap"
-                />
-                <CardBody>
-                  <h4 className={classes.cardTitle}>
-                    라붐 뮤직비디오(4분30초)
-                  </h4>
-                  <div>총 토큰량 : 400,000개</div>
-                  <p>남은 토큰량 : 378,000개 </p>
-                  <CustomLinearProgress
-                    variant="determinate"
-                    color="success"
-                    value={5}
-                  />
-                  <p>5%</p>
-                  <GridContainer justify="center">
-                    <Button component={Link} to="/project" color="primary" round className={classes.button}>
-                      GET STARTED
-                    </Button>
-                  </GridContainer>
-                </CardBody>
-              </Card>
-            </GridItem>
+            {projects.map(p => (
+              <Item {...p} classes={classes} key={p.data_value} />
+            ))}
           </GridContainer>
         </div>
       </div>
