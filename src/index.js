@@ -26,7 +26,7 @@ ReactDOM.render(
       <Route path="/login-page" component={LoginPage} />
       <Route path="/signUp-page" component={SignUpPage} />
       <Route path="/kyc-page" component={KycPage} />
-      <Route path="/project" component={ProjectPage} />
+      <Route path="/projects/:projectId" component={ProjectPage} />
       <Route path="/closed-project" component={ClosedProjectPage} />
       {/* <Route path="/main" component={MainPage} /> */}
       <Route path="/" component={MainPage} />

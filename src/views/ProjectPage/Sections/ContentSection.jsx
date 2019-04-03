@@ -35,7 +35,7 @@ class ContentSection extends React.Component {
   state = {
     quantity: 1,
     price: 10000,
-    open: false,
+    open: false
   };
 
   handleClickOpen = () => {
@@ -50,111 +50,148 @@ class ContentSection extends React.Component {
     this.setState({ [prop]: event.target.value });
   };
   render() {
-    const { classes } = this.props;
+    const { classes, project } = this.props;
     const { quantity, price } = this.state;
-
+    let percent;
+    if (project.remain_token == 0) percent = 100;
+    else
+      percent = parseInt(
+        ((project.total_token - project.remain_token) / project.total_token) *
+          100
+      );
     return (
-        <div className={classes.section}>
-          <div>
-            <GridContainer>
-              <GridItem xs={12} md={12}>
-                <Typography variant ="h4" component="h1" className={classes.projectTitle}>
-                BTS NEW ALBUM
-                </Typography>
-              </GridItem>
-              <GridItem xs={6} md={6}>
-                <Typography variant="h6" component="h2" className={classes.projectSubTitle}>
-                  Price
-                </Typography>
-                <Typography component="p">
-                  10,000 KRW
-                </Typography>
-              </GridItem>
-              <GridItem xs={6} md={6}>
-                <Typography variant="h6" component="h2" className={classes.projectSubTitle}>
-                  Total Value
-                </Typography>
-                <Typography component="p">
-                  3,780,000,000 KRW
-                </Typography>
-              </GridItem>
+      <div className={classes.section}>
+        <div>
+          <GridContainer>
+            <GridItem xs={12} md={12}>
+              <Typography
+                variant="h4"
+                component="h1"
+                className={classes.projectTitle}
+              >
+                {project.data_value}
+              </Typography>
+            </GridItem>
+            <GridItem xs={6} md={6}>
+              <Typography
+                variant="h6"
+                component="h2"
+                className={classes.projectSubTitle}
+              >
+                Price
+              </Typography>
+              <Typography component="p">10,000 KRW</Typography>
+            </GridItem>
+            <GridItem xs={6} md={6}>
+              <Typography
+                variant="h6"
+                component="h2"
+                className={classes.projectSubTitle}
+              >
+                Total Value
+              </Typography>
+              <Typography component="p">3,780,000,000 KRW</Typography>
+            </GridItem>
 
-              <GridItem xs={12} md={12}>
-                <Card>
-                  <CardBody>
-                    <GridContainer>
+            <GridItem xs={12} md={12}>
+              <Card>
+                <CardBody>
+                  <GridContainer>
                     <GridItem xs={12} md={6}>
-                    <img
+                      <img
                         style={{ width: "100%", display: "block" }}
                         className={classes.imgCardTop}
-                        src="https://saluki.codechain.io/console/imgs/ab233b6e5143e64438622274d7386c78.PNG"
+                        src={project.album_img}
                         alt="Card-img-cap"
-                    />
-                    <GridContainer>
-                      <GridItem xs={6} md={6}>
-                        <Typography align="left">남은 토큰량 : 0개 </Typography>
-                      </GridItem>
-                      <GridItem xs={6} md={6}>
-                        <Typography align="right">총 토큰량 : 378,000개</Typography>
-                      </GridItem>
-                    </GridContainer>
-                    <CustomLinearProgress
+                      />
+                      <GridContainer>
+                        <GridItem xs={6} md={6}>
+                          <Typography align="left">
+                            Remain Token : {project.remain_token}{" "}
+                          </Typography>
+                        </GridItem>
+                        <GridItem xs={6} md={6}>
+                          <Typography align="right">
+                            Total Token : {project.total_token}
+                          </Typography>
+                        </GridItem>
+                      </GridContainer>
+                      <CustomLinearProgress
                         variant="determinate"
                         color="danger"
-                        value={100}
-                    />
-                      <Typography align="right">100%</Typography>
-
+                        value={percent}
+                      />
+                      <Typography align="right">{percent}%</Typography>
                     </GridItem>
                     <GridItem xs={12} md={6}>
-                      <Typography>방탄소년단, LOVE YOURSELF 結 ‘Answer’ 발표! “팬들과의 축제” 시작<br/>
-                        LOVE YOURSELF 모든 비밀이 드러나다! ‘진정한 사랑은 나 자신을 사랑하는 것부터’<br/>
-                        타이틀곡 ‘IDOL’, 방탄소년단이 보여주는 ‘문화적 하이브리드’<br/><br/><br/></Typography>
+                      <Typography>{project.album_intro}</Typography>
                       Price
                       <TextField
-                          variant="outlined"
-                          id="filled-disabled"
-                          fullWidth
-                          defaultValue={price}
-                          className={classNames(classes.margin, classes.textField)}
+                        variant="outlined"
+                        id="filled-disabled"
+                        fullWidth
+                        defaultValue={price}
+                        className={classNames(
+                          classes.margin,
+                          classes.textField
+                        )}
                       />
                       Quantity
                       <TextField
-                          id="filled-adornment-amount"
-                          className={classNames(classes.margin, classes.textField)}
-                          variant="outlined"
-                          type="number"
-                          fullWidth
-                          // defaultValue={""}
-                          value={parseInt(quantity)}
-                          onChange={this.handleChange('quantity')}
-                          InputProps={{
-                            startAdornment: <InputAdornment position="end"></InputAdornment>,
-                          }}
+                        id="filled-adornment-amount"
+                        className={classNames(
+                          classes.margin,
+                          classes.textField
+                        )}
+                        variant="outlined"
+                        type="number"
+                        fullWidth
+                        // defaultValue={""}
+                        value={parseInt(quantity)}
+                        onChange={this.handleChange("quantity")}
+                        InputProps={{
+                          startAdornment: <InputAdornment position="end" />
+                        }}
                       />
                       Total
                       <TextField
-                          variant="outlined"
-                          id="filled-disabled"
-                          type="number"
-                          fullWidth
-                          value={price*quantity}
-                          className={classNames(classes.margin, classes.textField)}
-                          InputProps={{
-                            readOnly: true,
-                            startAdornment: <InputAdornment style={{textAlign : "right"}} position="start"></InputAdornment>
-                          }}
+                        variant="outlined"
+                        id="filled-disabled"
+                        type="number"
+                        fullWidth
+                        value={price * quantity}
+                        className={classNames(
+                          classes.margin,
+                          classes.textField
+                        )}
+                        InputProps={{
+                          readOnly: true,
+                          startAdornment: (
+                            <InputAdornment
+                              style={{ textAlign: "right" }}
+                              position="start"
+                            />
+                          )
+                        }}
                       />
-                      <Button variant="contained" size="large" color="primary" className={classes.button} onClick={this.handleClickOpen}>
+                      <Button
+                        variant="contained"
+                        size="large"
+                        color="primary"
+                        className={classes.button}
+                        onClick={this.handleClickOpen}
+                      >
                         Buy
                       </Button>
                       <Dialog
-                          open={this.state.open}
-                          onClose={this.handleClose}
-                          aria-labelledby="alert-dialog-title"
-                          aria-describedby="alert-dialog-description"
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
                       >
-                        <DialogTitle id="alert-dialog-title">{"BTS NEW ALBUM을 구매"}</DialogTitle>
+                        <DialogTitle id="alert-dialog-title">
+                          {"BTS NEW ALBUM을 구매"}
+                        </DialogTitle>
                         <DialogContent>
                           <DialogContentText id="alert-dialog-description">
                             구매하시려는 개수가 {quantity}개가 맞습니까?
@@ -164,20 +201,23 @@ class ContentSection extends React.Component {
                           <Button onClick={this.handleClose} color="primary">
                             No
                           </Button>
-                          <Button onClick={this.handleClose} color="primary" autoFocus>
+                          <Button
+                            onClick={this.handleClose}
+                            color="primary"
+                            autoFocus
+                          >
                             Yes
                           </Button>
                         </DialogActions>
                       </Dialog>
                     </GridItem>
-                    </GridContainer>
-                  </CardBody>
-                </Card>
-              </GridItem>
-
-            </GridContainer>
-          </div>
+                  </GridContainer>
+                </CardBody>
+              </Card>
+            </GridItem>
+          </GridContainer>
         </div>
+      </div>
     );
   }
 }

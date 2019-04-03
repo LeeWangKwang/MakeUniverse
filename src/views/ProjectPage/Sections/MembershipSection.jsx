@@ -17,16 +17,12 @@ const style = {
 
 class MembershipSection extends React.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, project } = this.props;
     return (
-        <div>
-          <h3>#구매혜택</h3>
-          공개방송 우선 입장 기회 제공<br/>
-          BTS 팬미팅, 단독콘서트, 이벤트 선예매 기회 제공<br/>
-          BTS 공식 팬카페 정회원 대상 우수회원 등급 조정<br/>
-          BTS 공식 팬카페 내 전용 공간 제공<br/>
-          BTS Membership Card 발급 및 굿즈 제공
-        </div>
+      <div>
+        <h3>#구매혜택</h3>
+        {project.membership_detail}
+      </div>
     );
   }
 }

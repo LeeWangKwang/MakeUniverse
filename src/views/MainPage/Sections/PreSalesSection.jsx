@@ -26,7 +26,7 @@ const Item = props => {
   const { album_img, data_value, total_token, remain_token, classes } = props;
   let percent;
   if (remain_token == 0) percent = 100;
-  else percent = parseInt(total_token / remain_token);
+  else percent = parseInt(((total_token - remain_token) / total_token) * 100);
   return (
     <GridItem xs={12} md={4}>
       <Card>
@@ -47,7 +47,12 @@ const Item = props => {
           />
           <p>{percent}%</p>
           <GridContainer justify="center">
-            <Button component={Link} to="/project" color="primary" round>
+            <Button
+              component={Link}
+              to={`/projects/${data_value}`}
+              color="primary"
+              round
+            >
               GET STARTED
             </Button>
           </GridContainer>
@@ -64,14 +69,13 @@ class PreSalesSection extends React.Component {
 
   componentDidMount() {
     apiClient.get(`/presales/get`, null, res => {
-      this.setState({ projects: res.Items });
+      this.setState({ projects: res.Items.reverse() });
     });
   }
 
   render() {
     const { classes } = this.props;
     const { projects } = this.state;
-    console.log(projects);
     return (
       <div className={classes.section}>
         <GridContainer justify="center">
