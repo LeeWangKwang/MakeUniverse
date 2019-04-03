@@ -45,9 +45,13 @@ class LoginPage extends React.Component {
     );
   }
   Login() {
-    apiClient.get(`/users/login?userId=${this.state.email}`, null, res => {
-      window.location = "/";
-    });
+    apiClient.get(
+      `?type=user&action=login&userId=${this.state.email}`,
+      null,
+      res => {
+        window.location = "/";
+      }
+    );
   }
 
   handleChange = name => event => {

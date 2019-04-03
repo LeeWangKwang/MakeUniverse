@@ -1,5 +1,5 @@
 const axios = require("axios");
-const api = "http://10.10.0.105:8808";
+const api = "https://nzm3ryv4qb.execute-api.us-west-1.amazonaws.com/dev/get";
 
 export function get(url, params, resFunc) {
   axios

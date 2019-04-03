@@ -68,7 +68,7 @@ class PreSalesSection extends React.Component {
   };
 
   componentDidMount() {
-    apiClient.get(`/presales/get`, null, res => {
+    apiClient.get(`?type=presale&action=get`, null, res => {
       this.setState({ projects: res.Items.reverse() });
     });
   }

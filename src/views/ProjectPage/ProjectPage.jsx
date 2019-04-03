@@ -19,7 +19,7 @@ class ProjectPage extends React.Component {
   componentDidMount() {
     const { match } = this.props;
     apiClient.get(
-      `/presales/get?value=${match.params.projectId}`,
+      `?type=presale&action=get&value=${match.params.projectId}`,
       null,
       res => {
         this.setState({ project: res.Items[0] });
@@ -31,7 +31,6 @@ class ProjectPage extends React.Component {
     const { classes, ...rest } = this.props;
     const { project } = this.state;
     const dashboardRoutes = [];
-    console.log(project);
     return (
       <div>
         <Header

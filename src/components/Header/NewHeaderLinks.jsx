@@ -29,13 +29,13 @@ class NewHeaderLinks extends React.Component {
   };
 
   componentDidMount() {
-    apiClient.get(`/users/isLogin`, null, res => {
+    apiClient.get(`?type=user&action=isLogin`, null, res => {
       this.setState({ isLogin: res.Items[0].isLogin });
     });
   }
 
   Logout() {
-    apiClient.get(`/users/logout`, null, res => {
+    apiClient.get(`?type=user&action=logout`, null, res => {
       window.location = "/";
     });
   }
@@ -75,7 +75,7 @@ class NewHeaderLinks extends React.Component {
               className={classes.navLink}
               onClick={() => this.Logout()}
             >
-              <Person className={classes.icons} /> LOG OUT
+              <Person className={classes.icons} /> LOGOUT
             </a>
           )}
         </ListItem>
