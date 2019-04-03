@@ -59,7 +59,6 @@ class ContentSection extends React.Component {
         ((project.total_token - project.remain_token) / project.total_token) *
           100
       );
-    console.log(project);
     return (
       <div className={classes.section}>
         <div>

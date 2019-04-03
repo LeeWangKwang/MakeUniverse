@@ -23,10 +23,15 @@ const style = {
 };
 
 class ClosedContentSection extends React.Component {
-  state = {};
-
   render() {
-    const { classes } = this.props;
+    const { classes, project } = this.props;
+    let percent;
+    if (project.remain_token == 0) percent = 100;
+    else
+      percent = parseInt(
+        ((project.total_token - project.remain_token) / project.total_token) *
+          100
+      );
     return (
       <div className={classes.section}>
         <div>
@@ -37,7 +42,7 @@ class ClosedContentSection extends React.Component {
                 component="h1"
                 className={classes.projectTitle}
               >
-                B.A.P NOIR
+                {project.data_value}
               </Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
@@ -48,7 +53,7 @@ class ClosedContentSection extends React.Component {
               >
                 Price
               </Typography>
-              <Typography component="p">10,000 KRW</Typography>
+              <Typography component="p">{project.token_price} KRW</Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
               <Typography
@@ -58,7 +63,9 @@ class ClosedContentSection extends React.Component {
               >
                 Total Value
               </Typography>
-              <Typography component="p">3,780,000,000 KRW</Typography>
+              <Typography component="p">
+                {project.token_price * project.total_token} KRW
+              </Typography>
             </GridItem>
 
             <GridItem xs={12} md={12}>
@@ -69,42 +76,31 @@ class ClosedContentSection extends React.Component {
                       <img
                         style={{ width: "100%", display: "block" }}
                         className={classes.imgCardTop}
-                        src="https://cdnimg.melon.co.kr/cm/album/images/100/12/902/10012902_500.jpg/melon/resize/282/quality/80/optimize"
+                        src={project.album_img}
                         alt="Card-img-cap"
                       />
                     </GridItem>
                     <GridItem xs={12} md={6}>
                       <Typography variant="h6" component="h2">
-                        NOIR
+                        {project.data_value}
                       </Typography>
                       <Typography variant="h5" component="h3">
-                        두 번째 정규앨범 'NOIR'로 돌아온 B.A.P. '느와르'라는
-                        옷을 입고 거친 '남자'로 돌아오다.
+                        {project.album_intro}
                       </Typography>
                       <br />
                       <Typography>
-                        발매일 : 2016.11.07
+                        발매일 : {project.release_date}
                         <br />
-                        장르 : Dance, Ballad
+                        장르 : {project.album_genre}
                         <br />
-                        발매사 : 티에스앤엔터테인먼트
+                        발매사 : {project.album_publisher}
                         <br />
-                        기획사 : (주)RBW
+                        기획사 : {project.album_agency}
                         <br />
                         <br />
                       </Typography>
-                      <Hidden mdDown>
-                        <Typography>
-                          두 번째 정규앨범 'NOIR'로 거친 남자가 되어 돌아온
-                          B.A.P. 그간 독보적인 강렬한 컨셉으로 전 세계를
-                          사로잡은 여섯 남자는 16개국 32회라는 월드투어의
-                          대장정으로 다져진 경험을 통해 명실공히 세계가 인정하는
-                          아티스트로 거듭났다. B.A.P의 아이덴티티를 다시 한 번
-                          각인시킬 이번 정규앨범 'NOIR'는 멤버들의 수준 높은
-                          퍼포먼스와 음악 그리고 한층 더 성숙해진 비주얼까지
-                          'Best', 'Absolute', 'Perfect'라는 수식어가 아깝지 않은
-                          B.A.P의 확고한 존재감을 엿볼 수 있는 결과물이다.
-                        </Typography>
+                      <Hidden>
+                        <Typography>{project.album_detail}</Typography>
                       </Hidden>
                     </GridItem>
                   </GridContainer>

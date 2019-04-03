@@ -8,6 +8,8 @@ import ContentSection from "./Sections/ContentSection";
 import InformationSection from "./Sections/InformationSection";
 import Footer from "../../components/Footer/Footer";
 import * as apiClient from "../../apiClient";
+import MiddleInformationSection from "./Sections/MiddleInformationSection";
+import ClosedContentSection from "./Sections/ClosedContentSection";
 
 class ProjectPage extends React.Component {
   state = {
@@ -29,6 +31,7 @@ class ProjectPage extends React.Component {
     const { classes, ...rest } = this.props;
     const { project } = this.state;
     const dashboardRoutes = [];
+    console.log(project);
     return (
       <div>
         <Header
@@ -47,7 +50,16 @@ class ProjectPage extends React.Component {
           <div className={classes.container}>
             {project !== null ? (
               <Fragment>
-                <ContentSection project={project} />
+                {project.project_status != "open" ? (
+                  <ClosedContentSection project={project} />
+                ) : (
+                  <ContentSection project={project} />
+                )}
+                {project.project_status != "open" ? (
+                  <MiddleInformationSection project={project} />
+                ) : (
+                  undefined
+                )}
                 <InformationSection project={project} />
               </Fragment>
             ) : (

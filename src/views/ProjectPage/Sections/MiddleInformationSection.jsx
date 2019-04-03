@@ -51,11 +51,11 @@ class MiddleInformationSection extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, project } = this.props;
 
     let data = {
       labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-      series: [[60, 151, 147, 45, 35, 37, 80, 19, 22, 55, 78, 57]]
+      series: [project.asset_revenue]
     };
 
     let options = {
@@ -108,20 +108,26 @@ class MiddleInformationSection extends React.Component {
             </Typography>
             <Typography className={classes.type}>저작권 보호기간</Typography>
             <Typography className={classes.typeValue}>
-              원작자 사후 70년
+              {project.basic_information[0]}
             </Typography>
             <Typography className={classes.type}>
               최근 1년 저작권료 (1조각)
             </Typography>
-            <Typography className={classes.typeValue}>688원</Typography>
+            <Typography className={classes.typeValue}>
+              {project.basic_information[1]}
+            </Typography>
             <Typography className={classes.type}>시작가 대비</Typography>
-            <Typography className={classes.typeValue}>15.3%</Typography>
+            <Typography className={classes.typeValue}>
+              {project.basic_information[2]}
+            </Typography>
             <Typography className={classes.type}>저작권신탁</Typography>
             <Typography className={classes.typeValue}>
-              한국음악저작권협회
+              {project.basic_information[3]}
             </Typography>
             <Typography className={classes.type}>대표신탁자</Typography>
-            <Typography className={classes.typeValue}>Make Universe</Typography>
+            <Typography className={classes.typeValue}>
+              {project.basic_information[4]}
+            </Typography>
           </GridItem>
           <GridItem xs={12} md={6} className={classes.info}>
             <Typography variant="h6" component="h3">
@@ -130,27 +136,41 @@ class MiddleInformationSection extends React.Component {
             <Typography className={classes.type}>
               방송 (TV, 라디오, 유튜브 등)
             </Typography>
-            <Typography className={classes.typeValue}>19원 (2.8%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[0]}
+            </Typography>
             <Typography className={classes.type}>
               전송 (음원유통사, 컬러링 등)
             </Typography>
-            <Typography className={classes.typeValue}>360원 (52.3%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[1]}
+            </Typography>
             <Typography className={classes.type}>
               복제 (음반, 영화, 광고 등)
             </Typography>
-            <Typography className={classes.typeValue}>19원 (2.8%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[2]}
+            </Typography>
             <Typography className={classes.type}>
               공연 (노래방, 유원시설 등)
             </Typography>
-            <Typography className={classes.typeValue}>182원 (26.5%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[3]}
+            </Typography>
             <Typography className={classes.type}>
               방송 (TV, 라디오, 유튜브 등)
             </Typography>
-            <Typography className={classes.typeValue}>19원 (2.8%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[4]}
+            </Typography>
             <Typography className={classes.type}>해외</Typography>
-            <Typography className={classes.typeValue}>108원 (15.7%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[5]}
+            </Typography>
             <Typography className={classes.type}>기타</Typography>
-            <Typography className={classes.typeValue}>0원 (0%)</Typography>
+            <Typography className={classes.typeValue}>
+              {project.recent_revenue[6]}
+            </Typography>
           </GridItem>
           <GridItem xs={12} md={6} className={classes.info}>
             <Typography variant="h6" component="h3">
@@ -164,21 +184,16 @@ class MiddleInformationSection extends React.Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               >
-                <FormControlLabel
-                  value="1"
-                  control={<Radio color="primary" />}
-                  label="밥차 지원"
-                />
-                <FormControlLabel
-                  value="2"
-                  control={<Radio color="primary" />}
-                  label="쇼핑 시켜주기"
-                />
-                <FormControlLabel
-                  value="3"
-                  control={<Radio color="primary" />}
-                  label="치킨 사주기"
-                />
+                {project.issue_voting.map((item, i) => {
+                  return (
+                    <FormControlLabel
+                      key={`vote_${i}`}
+                      value={i + 1}
+                      control={<Radio color="primary" />}
+                      label={item}
+                    />
+                  );
+                })}
               </RadioGroup>
               <Button
                 variant="contained"
