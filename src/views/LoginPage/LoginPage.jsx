@@ -22,6 +22,7 @@ import image from "assets/img/bg7.jpg";
 import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import Header from "../../components/Header/Header";
 import { Link } from "react-router-dom";
+import * as apiClient from "../../apiClient";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class LoginPage extends React.Component {
     this.state = {
       cardAnimaton: "cardHidden",
       apiResponse: "",
-      email: "shane0531@gmail.com",
+      email: "",
       password: ""
     };
   }
@@ -43,10 +44,10 @@ class LoginPage extends React.Component {
       700
     );
   }
-  callAPI(userId) {
-    fetch("http://localhost:8808/users/" + userId)
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
+  Login() {
+    apiClient.get(`/users/login?userId=${this.state.email}`, null, res => {
+      window.location = "/";
+    });
   }
 
   handleChange = name => event => {
@@ -57,7 +58,7 @@ class LoginPage extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props;
-
+    const { email, password } = this.state;
     return (
       <div>
         <Header
@@ -121,6 +122,10 @@ class LoginPage extends React.Component {
                         }}
                         inputProps={{
                           type: "email",
+                          value: email,
+                          onChange: e => {
+                            this.setState({ email: e.target.value });
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
                               <Email className={classes.inputIconsColor} />
@@ -137,6 +142,10 @@ class LoginPage extends React.Component {
                         onChange={this.handleChange("password")}
                         inputProps={{
                           type: "password",
+                          value: password,
+                          onChange: e => {
+                            this.setState({ password: e.target.value });
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
                               <Icon className={classes.inputIconsColor}>
@@ -154,7 +163,7 @@ class LoginPage extends React.Component {
                           color="primary"
                           size="lg"
                           onClick={() => {
-                            this.callAPI(this.state.email);
+                            this.Login();
                           }}
                         >
                           Get started

@@ -59,6 +59,7 @@ class ContentSection extends React.Component {
         ((project.total_token - project.remain_token) / project.total_token) *
           100
       );
+    console.log(project);
     return (
       <div className={classes.section}>
         <div>
@@ -80,7 +81,7 @@ class ContentSection extends React.Component {
               >
                 Price
               </Typography>
-              <Typography component="p">10,000 KRW</Typography>
+              <Typography component="p">{project.token_price} KRW</Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
               <Typography
@@ -90,7 +91,9 @@ class ContentSection extends React.Component {
               >
                 Total Value
               </Typography>
-              <Typography component="p">3,780,000,000 KRW</Typography>
+              <Typography component="p">
+                {project.token_price * project.total_token} KRW
+              </Typography>
             </GridItem>
 
             <GridItem xs={12} md={12}>
@@ -107,12 +110,12 @@ class ContentSection extends React.Component {
                       <GridContainer>
                         <GridItem xs={6} md={6}>
                           <Typography align="left">
-                            Remain Token : {project.remain_token}{" "}
+                            Remain Token:{project.remain_token}
                           </Typography>
                         </GridItem>
                         <GridItem xs={6} md={6}>
                           <Typography align="right">
-                            Total Token : {project.total_token}
+                            Total Token:{project.total_token}
                           </Typography>
                         </GridItem>
                       </GridContainer>

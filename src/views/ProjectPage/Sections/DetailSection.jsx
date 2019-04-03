@@ -29,7 +29,6 @@ function createData(trackNo, trackName) {
 class DetailSection extends React.Component {
   render() {
     const { classes, project } = this.props;
-    console.log(project);
     let rows = [];
     project.album_track.map((t, i) => {
       rows.push(createData(i + 1, t));
