@@ -18,11 +18,7 @@ const style = {
 class GraphAnalysisSection extends React.Component {
   render() {
     const { classes } = this.props;
-    return (
-        <div className={classes.section}>
-
-        </div>
-    );
+    return <div className={classes.section} />;
   }
 }
 

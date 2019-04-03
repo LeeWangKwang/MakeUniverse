@@ -15,28 +15,28 @@ class ClosedProjectPage extends React.Component {
 
     const dashboardRoutes = [];
     return (
-        <div>
-          <Header
-              color="white"
-              routes={dashboardRoutes}
-              brand="makeUNIVERSE"
-              rightLinks={<NewHeaderLinks />}
-              fixed
-              changeColorOnScroll={{
-                height: 400,
-                color: "white"
-              }}
-              {...rest}
-          />
-          <div className={classNames(classes.main)}>
-            <div className={classes.container}>
-              <ClosedContentSection />
-              <MiddleInformationSection/>
-              <InformationSection/>
-            </div>
+      <div>
+        <Header
+          color="white"
+          routes={dashboardRoutes}
+          brand="makeUNIVERSE"
+          rightLinks={<NewHeaderLinks />}
+          fixed
+          changeColorOnScroll={{
+            height: 400,
+            color: "white"
+          }}
+          {...rest}
+        />
+        <div className={classNames(classes.main)}>
+          <div className={classes.container}>
+            <ClosedContentSection />
+            <MiddleInformationSection />
+            <InformationSection />
           </div>
-          <Footer />
         </div>
+        <Footer />
+      </div>
     );
   }
 }

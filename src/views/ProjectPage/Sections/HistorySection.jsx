@@ -24,42 +24,41 @@ const style = {
 let id = 0;
 function createData(date, quantity, total) {
   id += 1;
-  return { id, date, quantity, total};
+  return { id, date, quantity, total };
 }
 
 const rows = [
-  createData('2019-04-03', 3, "30,000"),
-  createData('2018-11-30', 2, "20,000"),
-  createData('2018-10-05', 10, "100,000"),
+  createData("2019-04-03", 3, "30,000"),
+  createData("2018-11-30", 2, "20,000"),
+  createData("2018-10-05", 10, "100,000")
 ];
-
 
 class HistorySection extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-        <Paper className={classes.root}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell>거래 일자</TableCell>
-                <TableCell align="right">수량</TableCell>
-                <TableCell align="right">가격 (￦)</TableCell>
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>거래 일자</TableCell>
+              <TableCell align="right">수량</TableCell>
+              <TableCell align="right">가격 (￦)</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map(row => (
+              <TableRow className={classes.row} key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.date}
+                </TableCell>
+                <TableCell align="right">{row.quantity}</TableCell>
+                <TableCell align="right">{row.total}</TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(row => (
-                  <TableRow className={classes.row} key={row.id}>
-                    <TableCell component="th" scope="row">
-                      {row.date}
-                    </TableCell>
-                    <TableCell align="right">{row.quantity}</TableCell>
-                    <TableCell align="right">{row.total}</TableCell>
-                  </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Paper>
+            ))}
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }
