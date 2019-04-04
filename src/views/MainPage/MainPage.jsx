@@ -41,10 +41,9 @@ class MainPage extends React.Component {
               <GridItem xs={12} sm={12} md={6}>
                 <h1 className={classes.title}>BTS NEW ALBUM</h1>
                 <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that's why we added this text here. Add here all
-                  the information that can make you or your product create the
-                  first impression.
+                  You’ve attended their concerts. Streamed countless hours of their music. Clicked a million times for a chance to buy an A.R.M.Y Bomb.
+                  Now, join millions of A.R.M.Y worldwide and become an official co-owner of BTS songs and albums!
+                  Receive exclusive membership benefits as well as rights to vote on important BTS-related issues!
                 </h4>
                 <br />
               </GridItem>

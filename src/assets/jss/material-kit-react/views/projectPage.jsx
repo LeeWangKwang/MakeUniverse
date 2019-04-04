@@ -53,6 +53,9 @@ const projectPageStyle = {
   info: {
     margin : "0 0 15px"
   },
+  category: {
+    width:"100%",
+  },
   type : {
     width:"50%",
     float:"left",
@@ -67,6 +70,9 @@ const projectPageStyle = {
   middleInfo : {
     padding: "0 15px 30px"
   },
+  membership : {
+    whiteSpace : "pre-line"
+  }
 };
 
 export default projectPageStyle;

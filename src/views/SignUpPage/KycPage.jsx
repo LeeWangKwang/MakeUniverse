@@ -80,8 +80,8 @@ class SignUpPage extends React.Component {
                         <h4>KYC</h4>
                       </CardHeader>
                       <p className={classes.divider}>
-                        사용자 정보 입력<br/><br/>
-                        인증 가능 신분증 : 여권 또는 신분증
+                        User Information<br/><br/>
+                        Please, provide your information and valid personal identification document.
                       </p>
                       <CardBody>
                         <CustomInput
@@ -125,7 +125,7 @@ class SignUpPage extends React.Component {
                           </RadioGroup>
                         </FormControl>
                         <CustomInput
-                            labelText="여권 또는 신분증 번호"
+                            labelText="User Information"
                             id="identity"
                             formControlProps={{
                               fullWidth: true
@@ -139,7 +139,7 @@ class SignUpPage extends React.Component {
                             }}
                         />
                         <CustomInput
-                            labelText="생년월일(YYYYMMDD)"
+                            labelText="Birthdate (YYYYMMDD)"
                             id="last"
                             formControlProps={{
                               fullWidth: true

@@ -36,16 +36,16 @@ class DetailSection extends React.Component {
 
     return (
       <div>
-        <h3>앨범 정보</h3>
+        <h3>Album Information</h3>
         {project.album_detail}
         <br />
         <br />
-        <h3>앨범 수록곡</h3>
+        <h3>Tracklist</h3>
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>번호</TableCell>
-              <TableCell align="left">곡 정보</TableCell>
+              <TableCell>Track No.</TableCell>
+              <TableCell align="left">Track Title</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

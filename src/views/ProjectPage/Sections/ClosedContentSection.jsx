@@ -89,13 +89,13 @@ class ClosedContentSection extends React.Component {
                       </Typography>
                       <br />
                       <Typography>
-                        발매일 : {project.release_date}
+                        Release Date : {project.release_date}
                         <br />
-                        장르 : {project.album_genre}
+                        Genre : {project.album_genre}
                         <br />
-                        발매사 : {project.album_publisher}
+                        Seller : {project.album_publisher}
                         <br />
-                        기획사 : {project.album_agency}
+                        Producer : {project.album_agency}
                         <br />
                         <br />
                       </Typography>

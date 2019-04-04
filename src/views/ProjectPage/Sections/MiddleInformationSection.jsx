@@ -104,79 +104,38 @@ class MiddleInformationSection extends React.Component {
         <GridContainer>
           <GridItem xs={12} md={6} className={classes.info}>
             <Typography variant="h6" component="h3">
-              기본 정보
+              Basic Information
             </Typography>
-            <Typography className={classes.type}>저작권 보호기간</Typography>
+            <Typography className={classes.type}>Validity period of rights</Typography>
             <Typography className={classes.typeValue}>
               {project.basic_information[0]}
             </Typography>
             <Typography className={classes.type}>
-              최근 1년 저작권료 (1조각)
+              Copyright trust
             </Typography>
             <Typography className={classes.typeValue}>
               {project.basic_information[1]}
             </Typography>
-            <Typography className={classes.type}>시작가 대비</Typography>
+            <Typography className={classes.type}>Trustee</Typography>
             <Typography className={classes.typeValue}>
               {project.basic_information[2]}
-            </Typography>
-            <Typography className={classes.type}>저작권신탁</Typography>
-            <Typography className={classes.typeValue}>
-              {project.basic_information[3]}
-            </Typography>
-            <Typography className={classes.type}>대표신탁자</Typography>
-            <Typography className={classes.typeValue}>
-              {project.basic_information[4]}
             </Typography>
           </GridItem>
           <GridItem xs={12} md={6} className={classes.info}>
             <Typography variant="h6" component="h3">
-              최근 1년 저작권료 (1조각 기준)
+              Digital Asset Revenue
             </Typography>
-            <Typography className={classes.type}>
-              방송 (TV, 라디오, 유튜브 등)
-            </Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[0]}
-            </Typography>
-            <Typography className={classes.type}>
-              전송 (음원유통사, 컬러링 등)
-            </Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[1]}
-            </Typography>
-            <Typography className={classes.type}>
-              복제 (음반, 영화, 광고 등)
-            </Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[2]}
-            </Typography>
-            <Typography className={classes.type}>
-              공연 (노래방, 유원시설 등)
-            </Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[3]}
-            </Typography>
-            <Typography className={classes.type}>
-              방송 (TV, 라디오, 유튜브 등)
-            </Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[4]}
-            </Typography>
-            <Typography className={classes.type}>해외</Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[5]}
-            </Typography>
-            <Typography className={classes.type}>기타</Typography>
-            <Typography className={classes.typeValue}>
-              {project.recent_revenue[6]}
-            </Typography>
+            <ChartistGraph
+                data={data}
+                options={options}
+                type={type}
+                listener={animation}
+            />
           </GridItem>
           <GridItem xs={12} md={6} className={classes.info}>
             <Typography variant="h6" component="h3">
               Issue Voting
             </Typography>
-
             <FormControl component="fieldset" className={classes.formControl}>
               <RadioGroup
                 name="Issue Voting"
@@ -229,14 +188,14 @@ class MiddleInformationSection extends React.Component {
           </GridItem>
           <GridItem xs={12} md={6} className={classes.info}>
             <Typography variant="h6" component="h3">
-              Digital Asset Revenue
+              Digital revenue category breakdown
             </Typography>
-            <ChartistGraph
-              data={data}
-              options={options}
-              type={type}
-              listener={animation}
-            />
+            <Typography className={classes.category}>
+              Music streaming (Melon, Genie, Spotify, Apple Music, Amazon Music)
+            </Typography>
+            <Typography className={classes.category}>
+              Performance royalties (TV, radio)
+            </Typography>
           </GridItem>
         </GridContainer>
       </div>

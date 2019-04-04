@@ -19,8 +19,8 @@ class MembershipSection extends React.Component {
   render() {
     const { classes, project } = this.props;
     return (
-      <div>
-        <h3>#구매혜택</h3>
+      <div className={classes.membership}>
+        <h3>#Membership Benefits</h3>
         {project.membership_detail}
       </div>
     );
