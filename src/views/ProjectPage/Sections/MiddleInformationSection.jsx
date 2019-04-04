@@ -161,7 +161,7 @@ class MiddleInformationSection extends React.Component {
                 className={classes.button}
                 onClick={this.handleClickOpen}
               >
-                투표
+                Vote
               </Button>
               <Dialog
                 open={this.state.open}
@@ -169,10 +169,10 @@ class MiddleInformationSection extends React.Component {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
               >
-                <DialogTitle id="alert-dialog-title">{"투표"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">{"Vote"}</DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description">
-                    투표하시겠습니까?
+                    Confirm vote?
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>

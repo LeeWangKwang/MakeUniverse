@@ -32,6 +32,10 @@ const style = {
   ...projectPageStyle
 };
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 class ContentSection extends React.Component {
   state = {
     quantity: 1,
@@ -97,7 +101,7 @@ class ContentSection extends React.Component {
               >
                 Price
               </Typography>
-              <Typography component="p">{project.token_price} KRW</Typography>
+              <Typography component="p">{numberWithCommas(project.token_price)} KRW</Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
               <Typography
@@ -108,7 +112,7 @@ class ContentSection extends React.Component {
                 Total Value
               </Typography>
               <Typography component="p">
-                {project.token_price * project.total_token} KRW
+                {numberWithCommas(project.token_price * project.total_token)} KRW
               </Typography>
             </GridItem>
 
@@ -126,12 +130,12 @@ class ContentSection extends React.Component {
                       <GridContainer>
                         <GridItem xs={6} md={6}>
                           <Typography align="left">
-                            Remain Token:{project.remain_token}
+                            Tokens remaining:{numberWithCommas(project.remain_token)}
                           </Typography>
                         </GridItem>
                         <GridItem xs={6} md={6}>
                           <Typography align="right">
-                            Total Token:{project.total_token}
+                            Total Token:{numberWithCommas(project.total_token)}
                           </Typography>
                         </GridItem>
                       </GridContainer>
@@ -149,7 +153,7 @@ class ContentSection extends React.Component {
                         variant="outlined"
                         id="filled-disabled"
                         fullWidth
-                        defaultValue={price}
+                        defaultValue={numberWithCommas(price)}
                         className={classNames(
                           classes.margin,
                           classes.textField
@@ -176,9 +180,8 @@ class ContentSection extends React.Component {
                       <TextField
                         variant="outlined"
                         id="filled-disabled"
-                        type="number"
                         fullWidth
-                        value={price * quantity}
+                        value={numberWithCommas(price * quantity)}
                         className={classNames(
                           classes.margin,
                           classes.textField

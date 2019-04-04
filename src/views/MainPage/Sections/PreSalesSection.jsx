@@ -21,6 +21,9 @@ const style = {
   cardTitle,
   ...workStyle
 };
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 const Item = props => {
   const { album_img, data_value, total_token, remain_token, classes } = props;
@@ -38,8 +41,8 @@ const Item = props => {
         />
         <CardBody>
           <h4 className={classes.cardTitle}>{data_value}</h4>
-          <div>Total Token : {total_token}</div>
-          <p>Remain Token : {remain_token} </p>
+          <div>Total Token : {numberWithCommas(total_token)}</div>
+          <p>Tokens Remaining : {numberWithCommas(remain_token)} </p>
           <CustomLinearProgress
             variant="determinate"
             color="danger"

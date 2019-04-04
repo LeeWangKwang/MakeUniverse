@@ -21,6 +21,17 @@ const style = {
   ...projectPageStyle
 };
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function dateFormmating(date){
+  let year = date.substring(0,4);
+  let month = date.substring(4,6)
+  let day = date.substring(6,8);
+
+  return year+'-'+month+'-'+day
+
+}
 class HistorySection extends React.Component {
   render() {
 
@@ -41,10 +52,10 @@ class HistorySection extends React.Component {
             {transactions.map((t,i) => (
               <TableRow className={classes.row} key={i}>
                 <TableCell component="th" scope="row">
-                  {t.transaction_date}
+                  {dateFormmating(t.transaction_date)}
                 </TableCell>
-                <TableCell align="right">{t.quantity}</TableCell>
-                <TableCell align="right">{t.quantity * project.token_price}</TableCell>
+                <TableCell align="right">{numberWithCommas(t.quantity)}</TableCell>
+                <TableCell align="right">{numberWithCommas(t.quantity * project.token_price)}</TableCell>
               </TableRow>
             ))}
           </TableBody>
