@@ -48,7 +48,6 @@ class NavTabs extends React.Component {
   getUsersTransactions() {
     apiClient.get(`?type=transaction&action=get&project=${this.props.project.data_value}&userId=${this.state.userId}`, null, res =>{
       this.setState({transactions: res.Items});
-      console.log(this.state.transactions)
     });
   }
 

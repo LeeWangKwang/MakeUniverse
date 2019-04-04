@@ -48,7 +48,6 @@ class ContentSection extends React.Component {
   componentDidMount() {
     apiClient.get(`?type=user&action=isLogin`, null, res => {
       this.setState({ isLogin: res.Items[0].isLogin, userId:res.Items[0].loginedId });
-      this.getUsersTransactions()
     });
   }
 

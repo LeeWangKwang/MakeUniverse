@@ -23,7 +23,6 @@ class ProjectPage extends React.Component {
       null,
       res => {
         this.setState({ project: res.Items[0] });
-        console.log(res);
       }
     );
   }

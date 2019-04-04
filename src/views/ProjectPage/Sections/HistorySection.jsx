@@ -37,7 +37,6 @@ class HistorySection extends React.Component {
 
     const { classes, project, transactions } = this.props;
 
-    console.log(transactions)
     return (
       <Paper className={classes.root}>
         <Table className={classes.table}>
