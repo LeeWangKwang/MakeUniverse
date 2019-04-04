@@ -73,7 +73,7 @@ class ContentSection extends React.Component {
     const { classes, project } = this.props;
     const { quantity, price } = this.state;
     let percent;
-    if (project.remain_token == 0) percent = 100;
+    if (project.remain_token === 0) percent = 100;
     else
       percent = parseInt(
         ((project.total_token - project.remain_token) / project.total_token) *

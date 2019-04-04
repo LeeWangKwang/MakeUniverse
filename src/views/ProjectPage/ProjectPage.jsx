@@ -49,12 +49,12 @@ class ProjectPage extends React.Component {
           <div className={classes.container}>
             {project !== null ? (
               <Fragment>
-                {project.project_status != "open" ? (
+                {project.project_status !== "open" ? (
                   <ClosedContentSection project={project} />
                 ) : (
                   <ContentSection project={project} />
                 )}
-                {project.project_status != "open" ? (
+                {project.project_status !== "open" ? (
                   <MiddleInformationSection project={project} />
                 ) : (
                   undefined
