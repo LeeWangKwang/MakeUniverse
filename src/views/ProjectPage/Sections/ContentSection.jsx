@@ -157,6 +157,15 @@ class ContentSection extends React.Component {
                           classes.margin,
                           classes.textField
                         )}
+                        InputProps={{
+                          readOnly: true,
+                          startAdornment: (
+                              <InputAdornment
+                                  style={{ textAlign: "right" }}
+                                  position="start"
+                              />
+                          )
+                        }}
                       />
                       Quantity
                       <TextField
