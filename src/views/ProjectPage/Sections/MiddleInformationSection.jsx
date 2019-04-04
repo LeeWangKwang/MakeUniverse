@@ -188,7 +188,7 @@ class MiddleInformationSection extends React.Component {
                   return (
                     <FormControlLabel
                       key={`vote_${i}`}
-                      value={i + 1}
+                      value={(i + 1).toString()}
                       control={<Radio color="primary" />}
                       label={item}
                     />
