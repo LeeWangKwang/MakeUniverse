@@ -22,13 +22,9 @@ class ProductSection extends React.Component {
       <div className={classes.section}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
-            <h2 className={classes.title}>WHAT IS MAKEUNIVERSE?</h2>
+            <h2 className={classes.title}>What is makeUNIVERSE</h2>
             <h5 className={classes.description}>
-              메이크유니버스는 K-Contents인 음원, 영상, 관련 콘텐츠 및 오프라인 활동수익에 대한 사업권을
-              기존의 소유권자인 기획사로부터 공동소유권을 구입하여 이를 분할하여 판매하고 있습니다.
-              분할된 소유권자들에게는 투명한 의사결정 수단을 제공하고, 그에 따른 수익금 활용정책을 수립합니다.
-              콘텐츠 수익 분배 증명은 판매되는 저작사업권인 온라인 음원, 뮤직비디오 또는 유사 디지털콘텐츠에서
-              발생하는 수익 및 오프라인 활동수익으로 이루어지고 있습니다.
+              makeUNIVERSE makes it possible for K-Pop content fans and enthusiasts to go from observer to participant. We enabling the purchasing of content right fragments, fans can collectively become co-owners of their artists’ creative work. By retaining the majority of the content right, artists are able to keep creative control while being able to track and interact with their biggest supporters and fans. The control for the usage of revenue resulting from the fans’ share of the content right will be given to the fragment holders, allowing them to make impactful decisions.
             </h5>
           </GridItem>
         </GridContainer>

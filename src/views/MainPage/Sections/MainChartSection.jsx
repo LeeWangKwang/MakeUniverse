@@ -22,13 +22,10 @@ class MainChartSection extends React.Component {
         <div className="Main_PreSales" >
           <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={8}>
-              <h2 className={classes.title}>Market Chart</h2>
+              <h2 className={classes.title}>The Market</h2>
               <h5 className={classes.description}>
-                This is the paragraph where you can write more details about your
-                product. Keep you user engaged by providing meaningful
-                information. Remember that by this time, the user is curious,
-                otherwise he wouldn't scroll to get here. Add a button if you want
-                the user to see more.
+                Did you know that most music content generates only 20% of their lifetime revenue in the first year of their release?
+
               </h5>
             </GridItem>
           </GridContainer>

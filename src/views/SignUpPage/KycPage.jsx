@@ -21,6 +21,8 @@ import Radio from "@material-ui/core/Radio/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup/RadioGroup";
 import kyc1 from "assets/img/kyc/kyc1.png";
 import kyc2 from "assets/img/kyc/kyc2.png";
+import kyc3 from "assets/img/kyc/kyc3.png";
+import kyc4 from "assets/img/kyc/kyc4.png";
 import loginPageStyle from "../../assets/jss/material-kit-react/views/loginPage";
 
 class SignUpPage extends React.Component {
@@ -34,6 +36,7 @@ class SignUpPage extends React.Component {
       lastName:'',
       identity:'',
       birth:'',
+      kyc:false
     };
   }
   componentDidMount() {
@@ -49,11 +52,11 @@ class SignUpPage extends React.Component {
     this.setState({ value: event.target.value });
   };
   fillTheBlank(){
-    this.setState({firstName:"Kyle", lastName:"Kim", identity:"C03005988", value:"male", birth:"19970405" })
+    this.setState({firstName:"Kyle", lastName:"Kim", identity:"C03005988", value:"male", birth:"19970405", kyc:true})
   }
   render() {
     const { classes, ...rest } = this.props;
-    const { firstName, lastName, identity, birth } = this.state;
+    const { firstName, lastName, identity, birth, kyc } = this.state;
     return (
         <div>
           <Header
@@ -152,12 +155,15 @@ class SignUpPage extends React.Component {
                               },
                             }}
                         />
-                        <img src={kyc1} alt="Passport" className={classes.img} />
-                        <img src={kyc2} alt="Passport" className={classes.img} />
+                        <img src={kyc ? kyc3 : kyc1} alt="Passport" className={classes.img} />
+                        <img src={kyc ? kyc4 : kyc2} alt="Passport" className={classes.img} />
                       </CardBody>
                       <CardFooter className={classes.cardFooter}>
+                        <Button simple color="white" size="lg" onClick={() => {this.fillTheBlank();}}>
+                          Fill
+                        </Button>
                         <Link to="/" color="transparent" className={classes.navLink}>
-                          <Button simple color="white" size="lg">
+                          <Button simple color="primary" size="lg">
                             Done
                           </Button>
                         </Link>
