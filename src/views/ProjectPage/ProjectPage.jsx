@@ -19,10 +19,11 @@ class ProjectPage extends React.Component {
   componentDidMount() {
     const { match } = this.props;
     apiClient.get(
-      `?type=presale&action=get&value=${match.params.projectId}`,
+      `?type=presale&action=get&project=${match.params.projectId}`,
       null,
       res => {
         this.setState({ project: res.Items[0] });
+        console.log(res);
       }
     );
   }

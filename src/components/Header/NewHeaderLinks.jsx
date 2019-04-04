@@ -45,7 +45,7 @@ class NewHeaderLinks extends React.Component {
     const { isLogin } = this.state;
     return (
       <List className={classes.list}>
-        <ListItem className={classes.listItem}>
+        {/* <ListItem className={classes.listItem}>
           <Button href="/" color="transparent" className={classes.navLink}>
             <AttachMoney className={classes.icons} /> Pre-sale
           </Button>
@@ -59,7 +59,7 @@ class NewHeaderLinks extends React.Component {
           <Button href="/" color="transparent" className={classes.navLink}>
             <QuestionAnswerRounded className={classes.icons} /> FAQ
           </Button>
-        </ListItem>
+        </ListItem> */}
         <ListItem className={classes.listItem}>
           {isLogin == 0 ? (
             <Link
