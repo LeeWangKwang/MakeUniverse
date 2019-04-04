@@ -21,6 +21,9 @@ const style = {
   ...workStyle,
   ...projectPageStyle
 };
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 class ClosedContentSection extends React.Component {
   render() {
@@ -53,7 +56,7 @@ class ClosedContentSection extends React.Component {
               >
                 Price
               </Typography>
-              <Typography component="p">{project.token_price} KRW</Typography>
+              <Typography component="p">{numberWithCommas(project.token_price)} KRW</Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
               <Typography
@@ -64,7 +67,7 @@ class ClosedContentSection extends React.Component {
                 Total Value
               </Typography>
               <Typography component="p">
-                {project.token_price * project.total_token} KRW
+                {numberWithCommas(project.token_price * project.total_token)} KRW
               </Typography>
             </GridItem>
 
