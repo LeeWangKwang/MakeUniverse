@@ -10,6 +10,7 @@ import GraphAnalysisSection from "./GraphAnalysisSection";
 import DetailSection from "./DetailSection";
 import MembershipSection from "./MembershipSection";
 import HistorySection from "./HistorySection";
+import * as apiClient from "../../../apiClient";
 
 function InformationSection(props) {
   return (
@@ -38,8 +39,25 @@ const styles = theme => ({
 
 class NavTabs extends React.Component {
   state = {
-    value: 0
+    value: 0,
+    isLogin: 0,
+    userId: null,
+    transactions: null
   };
+
+  getUsersTransactions() {
+    apiClient.get(`?type=transaction&action=get&project=${this.props.project.data_value}&userId=${this.state.userId}`, null, res =>{
+      this.setState({transactions: res.Items});
+      console.log(this.state.transactions)
+    });
+  }
+
+  componentDidMount() {
+    apiClient.get(`?type=user&action=isLogin`, null, res => {
+      this.setState({ isLogin: res.Items[0].isLogin, userId:res.Items[0].loginedId });
+      this.getUsersTransactions()
+    });
+  }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -47,7 +65,7 @@ class NavTabs extends React.Component {
 
   render() {
     const { classes, project } = this.props;
-    const { value } = this.state;
+    const { value, userId, transactions } = this.state;
 
     return (
       <NoSsr>
@@ -62,7 +80,7 @@ class NavTabs extends React.Component {
               <LinkTab label="Graph Analysis" href="page1" />
               <LinkTab label="Detail" href="page2" />
               <LinkTab label="Membership" href="page3" />
-              <LinkTab label="My History" href="page4" />
+              {userId ? <LinkTab label="My History" href="page4" /> : undefined}
             </Tabs>
           </AppBar>
           {value === 0 && (
@@ -83,7 +101,7 @@ class NavTabs extends React.Component {
           {/*My history는 로그인 시에만 보이게*/}
           {value === 3 && (
             <InformationSection>
-              <HistorySection />
+              <HistorySection project={project} transactions={transactions}/>
             </InformationSection>
           )}
         </div>

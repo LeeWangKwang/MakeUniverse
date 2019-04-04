@@ -23,6 +23,7 @@ import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
+import * as apiClient from "../../../apiClient";
 
 const style = {
   ...imagesStyles,
@@ -35,8 +36,24 @@ class ContentSection extends React.Component {
   state = {
     quantity: 1,
     price: 10000,
-    open: false
+    open: false,
+    userId: null,
+    transactions: null
   };
+
+  componentDidMount() {
+    apiClient.get(`?type=user&action=isLogin`, null, res => {
+      this.setState({ isLogin: res.Items[0].isLogin, userId:res.Items[0].loginedId });
+      this.getUsersTransactions()
+    });
+  }
+
+  buyTokens(quantity) {
+    this.handleClose()
+    apiClient.get(`?type=presale&action=buy&project=${this.props.project.data_value}&userId=${this.state.userId}&buying=${quantity}&remaining=${this.props.project.remain_token}`, null, res =>{
+      this.setState({transactions: res.Items});
+    });
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -192,11 +209,11 @@ class ContentSection extends React.Component {
                         aria-describedby="alert-dialog-description"
                       >
                         <DialogTitle id="alert-dialog-title">
-                          {"BTS NEW ALBUM을 구매"}
+                          {"Buying"}
                         </DialogTitle>
                         <DialogContent>
                           <DialogContentText id="alert-dialog-description">
-                            구매하시려는 개수가 {quantity}개가 맞습니까?
+                            Check the amount : {quantity}
                           </DialogContentText>
                         </DialogContent>
                         <DialogActions>
@@ -204,11 +221,11 @@ class ContentSection extends React.Component {
                             No
                           </Button>
                           <Button
-                            onClick={this.handleClose}
+                            onClick={ () => this.buyTokens(quantity)}
                             color="primary"
                             autoFocus
                           >
-                            Yes
+                            Buy
                           </Button>
                         </DialogActions>
                       </Dialog>
