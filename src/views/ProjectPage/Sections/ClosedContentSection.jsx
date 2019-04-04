@@ -87,7 +87,7 @@ class ClosedContentSection extends React.Component {
                       <Typography variant="h6" component="h2">
                         {project.data_value}
                       </Typography>
-                      <Typography variant="h5" component="h3">
+                      <Typography variant="h5" component="h3" className={classes.albumIntroduction}>
                         {project.album_intro}
                       </Typography>
                       <br />

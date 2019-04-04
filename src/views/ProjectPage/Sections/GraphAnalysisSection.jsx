@@ -50,7 +50,8 @@ class GraphAnalysisSection extends React.Component {
         labelInterpolationFnc: function(value, index) {
           return value+'M';
         }
-      }
+      },
+      height:450
     };
     let type = "Line";
 

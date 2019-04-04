@@ -33,10 +33,13 @@ const projectPageStyle = {
   },
   projectTitle: {
     padding: "30px 0 15px",
-    borderBottom : "1px solid"
+    borderBottom : "1px solid",
   },
   projectSubTitle: {
     padding: "15px 0 0"
+  },
+  albumIntroduction: {
+    lineHeight:'1.1'
   },
   textField: {
     display: "block",
