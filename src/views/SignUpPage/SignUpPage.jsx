@@ -32,7 +32,11 @@ class SignUpPage extends React.Component {
     // we use this to make the card to appear after the page has been rendered
     this.state = {
       cardAnimaton: "cardHidden",
-      checkedA: false
+      checkedA: false,
+      firstName:"",
+      email:"",
+      password:"",
+      confirmPassword:""
     };
   }
   componentDidMount() {
@@ -47,8 +51,12 @@ class SignUpPage extends React.Component {
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
+  fillTheBlank(){
+    this.setState({firstName:"Kyle", email: "kylekim@gmail.com", password:"12345678", confirmPassword:"12345678",checkedA:true })
+  }
   render() {
     const { classes, ...rest } = this.props;
+    const { firstName, email, password, confirmPassword } = this.state;
     return (
       <div>
         <Header
@@ -112,6 +120,10 @@ class SignUpPage extends React.Component {
                         }}
                         inputProps={{
                           type: "text",
+                          value: firstName,
+                          onChange: e => {
+                            this.setState({ firstName: e.target.value });
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
                               <People className={classes.inputIconsColor} />
@@ -127,6 +139,10 @@ class SignUpPage extends React.Component {
                         }}
                         inputProps={{
                           type: "email",
+                          value: email,
+                          onChange: e => {
+                            this.setState({ email: e.target.value });
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
                               <Email className={classes.inputIconsColor} />
@@ -142,6 +158,10 @@ class SignUpPage extends React.Component {
                         }}
                         inputProps={{
                           type: "password",
+                          value: password,
+                          onChange: e => {
+                            this.setState({ password: e.target.value });
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
                               <Icon className={classes.inputIconsColor}>
@@ -159,6 +179,10 @@ class SignUpPage extends React.Component {
                         }}
                         inputProps={{
                           type: "password",
+                          value: confirmPassword,
+                          onChange: e => {
+                            this.setState({ confirmPassword: e.target.value });
+                          },
                           endAdornment: (
                             <InputAdornment position="end">
                               <Icon className={classes.inputIconsColor}>
@@ -180,6 +204,9 @@ class SignUpPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
+                      <Button simple color="white" size="lg" onClick={() => {this.fillTheBlank();}}>
+                        Fill
+                      </Button>
                       <Link
                         to="/kyc-page"
                         color="transparent"

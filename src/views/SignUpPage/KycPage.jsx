@@ -30,6 +30,10 @@ class SignUpPage extends React.Component {
     this.state = {
       cardAnimaton: "cardHidden",
       value: 'female',
+      firstName:'',
+      lastName:'',
+      identity:'',
+      birth:'',
     };
   }
   componentDidMount() {
@@ -44,8 +48,12 @@ class SignUpPage extends React.Component {
   handleChange = event => {
     this.setState({ value: event.target.value });
   };
+  fillTheBlank(){
+    this.setState({firstName:"Kyle", lastName:"Kim", identity:"C03005988", value:"male", birth:"19970405" })
+  }
   render() {
     const { classes, ...rest } = this.props;
+    const { firstName, lastName, identity, birth } = this.state;
     return (
         <div>
           <Header
@@ -83,7 +91,11 @@ class SignUpPage extends React.Component {
                               fullWidth: true
                             }}
                             inputProps={{
-                              type: "text"
+                              type: "text",
+                              value: firstName,
+                              onChange: e => {
+                                this.setState({ firstName: e.target.value });
+                              },
                             }}
                         />
                         <CustomInput
@@ -93,7 +105,11 @@ class SignUpPage extends React.Component {
                               fullWidth: true
                             }}
                             inputProps={{
-                              type: "text"
+                              type: "text",
+                              value: lastName,
+                              onChange: e => {
+                                this.setState({ lastName: e.target.value });
+                              },
                             }}
                         />
                         <FormControl component="fieldset" className={classes.formControl}>
@@ -110,12 +126,16 @@ class SignUpPage extends React.Component {
                         </FormControl>
                         <CustomInput
                             labelText="여권 또는 신분증 번호"
-                            id="last"
+                            id="identity"
                             formControlProps={{
                               fullWidth: true
                             }}
                             inputProps={{
-                              type: "text"
+                              type: "text",
+                              value: identity,
+                              onChange: e => {
+                                this.setState({ identity: e.target.value });
+                              },
                             }}
                         />
                         <CustomInput
@@ -125,7 +145,11 @@ class SignUpPage extends React.Component {
                               fullWidth: true
                             }}
                             inputProps={{
-                              type: "text"
+                              type: "text",
+                              value: birth,
+                              onChange: e => {
+                                this.setState({ birth: e.target.value });
+                              },
                             }}
                         />
                         <img src={kyc1} alt="Passport" className={classes.img} />
@@ -133,8 +157,8 @@ class SignUpPage extends React.Component {
                       </CardBody>
                       <CardFooter className={classes.cardFooter}>
                         <Link to="/" color="transparent" className={classes.navLink}>
-                          <Button simple color="primary" size="lg">
-                            확인
+                          <Button simple color="white" size="lg">
+                            Done
                           </Button>
                         </Link>
                       </CardFooter>

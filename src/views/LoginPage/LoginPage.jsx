@@ -60,6 +60,10 @@ class LoginPage extends React.Component {
     });
   };
 
+  fillTheBlank(){
+    this.setState({email: "kylekim@gmail.com", password:"12345678"})
+  }
+
   render() {
     const { classes, ...rest } = this.props;
     const { email, password } = this.state;
@@ -161,29 +165,35 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <GridItem xs={6}>
-                        <Button
+                      <Button
                           simple
-                          color="primary"
+                          color="white"
                           size="lg"
                           onClick={() => {
-                            this.Login();
+                            this.fillTheBlank();
                           }}
-                        >
-                          Get started
+                      >
+                        Fill
+                      </Button>
+                      <Button
+                        simple
+                        color="primary"
+                        size="lg"
+                        onClick={() => {
+                          this.Login();
+                        }}
+                      >
+                        Login
+                      </Button>
+                      <Link
+                        to="/signUp-page"
+                        color="transparent"
+                        className={classes.navLink}
+                      >
+                        <Button simple color="primary" size="lg">
+                          Sign Up
                         </Button>
-                      </GridItem>
-                      <GridItem xs={6}>
-                        <Link
-                          to="/signUp-page"
-                          color="transparent"
-                          className={classes.navLink}
-                        >
-                          <Button simple color="primary" size="lg">
-                            Sign Up
-                          </Button>
-                        </Link>
-                      </GridItem>
+                      </Link>
                     </CardFooter>
                   </form>
                 </Card>
