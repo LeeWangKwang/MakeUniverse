@@ -44,13 +44,6 @@ class PartnerSection extends React.Component {
                   className={classes.icon}
               />
             </GridItem>
-            <GridItem xs={12} sm={2}>
-              <img
-                  src={ygLogo}
-                  alt="..."
-                  className={classes.icon}
-              />
-            </GridItem>
           </GridContainer>
         </div>
     );
