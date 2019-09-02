@@ -72,12 +72,10 @@ class ContentSection extends React.Component {
   render() {
     const { classes, project } = this.props;
     const { quantity, price } = this.state;
-    let percent;
-    if (project.remain_token === 0) percent = 100;
-    else
-      percent = parseInt(
-        (1 - (parseInt(project.scheme.supply, 16) - project.soldToken) / parseInt(project.scheme.supply, 16)) * 100
-      );
+    let percent = parseInt(
+      (1 - (parseInt(project.scheme.supply, 16) - project.soldToken) / parseInt(project.scheme.supply, 16)) * 100
+    );
+
     return (
       <div className={classes.section}>
         <div>
@@ -88,7 +86,7 @@ class ContentSection extends React.Component {
                 component="h1"
                 className={classes.projectTitle}
               >
-                {project.data_value}
+                {project.name}
               </Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
@@ -120,12 +118,12 @@ class ContentSection extends React.Component {
                   <GridContainer>
                     <GridItem xs={12} md={6}>
                       <img
-                        style={{ width: "100%", display: "block" }}
+                        style={{ width: "100%", display: "block", height: "auto" }}
                         className={classes.imgCardTop}
                         src={project.scheme.metadata.icon_url}
                         alt="Card-img-cap"
                       />
-                      <GridContainer>
+                      <GridContainer style={{marginTop: '10px', marginBottom: '5px'}}>
                         <GridItem xs={6} md={6}>
                           <Typography align="left">
                             Tokens remaining:{numberWithCommas(parseInt(project.scheme.supply, 16) - project.soldToken)}

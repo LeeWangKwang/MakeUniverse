@@ -10,6 +10,8 @@ import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
 import projectPageStyle from "../../../assets/jss/material-kit-react/views/projectPage";
 import workStyle from "../../../assets/jss/material-kit-react/views/landingPageSections/workStyle";
 import * as apiClient from "../../../apiClient";
+import moment from "moment";
+import Typography from "@material-ui/core/Typography";
 
 const style = {
   ...imagesStyles,
@@ -38,16 +40,22 @@ class InvestorSection extends React.Component {
     const { classes, project } = this.props;
     const { investor} = this.state;
 
+    console.log(investor)
+
     return (
+      <React.Fragment>
+        <Typography variant="h5" component="h3" className={classes.info}>
+          Investor
+        </Typography>
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Date</TableCell>
-                <TableCell align="right">Name</TableCell>
-                <TableCell align="right">Nationality</TableCell>
-                <TableCell align="right">Email address</TableCell>
-                <TableCell align="right"># of tokens</TableCell>
+                <TableCell align="center">Date</TableCell>
+                <TableCell align="center">Name</TableCell>
+                <TableCell align="center">Nationality</TableCell>
+                <TableCell align="center">Email address</TableCell>
+                <TableCell align="center"># of tokens</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -57,19 +65,20 @@ class InvestorSection extends React.Component {
                   </TableRow>
                   : investor && investor.map(row => (
                       <TableRow key={row.investor.id}>
-                        <TableCell component="th" scope="row">
-                          {row.createdAt}
+                        <TableCell component="th" scope="row" align="center">
+                          {moment(row.createdAt).format('YYYY-MM-DD hh:mm:ss')}
                         </TableCell>
-                        <TableCell align="right">{row.investor.name}</TableCell>
-                        <TableCell align="right">{row.investor.nationality}</TableCell>
-                        <TableCell align="right">{row.investor.email}</TableCell>
-                        <TableCell align="right">{row.investAmount}</TableCell>
+                        <TableCell align="center">{row.investor.name}</TableCell>
+                        <TableCell align="center">{row.investor.nationality}</TableCell>
+                        <TableCell align="center">{row.investor.email}</TableCell>
+                        <TableCell align="center">{row.investAmount}</TableCell>
                       </TableRow>
                   ))
               }
             </TableBody>
           </Table>
         </Paper>
+      </React.Fragment>
     );
   }
 }
