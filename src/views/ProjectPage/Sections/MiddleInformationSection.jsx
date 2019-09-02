@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import ChartistGraph from "react-chartist";
 // material-ui components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -101,73 +101,61 @@ class MiddleInformationSection extends React.Component {
 
     return (
       <div className={classes.middleInfo}>
-        <GridContainer>
-          <GridItem xs={12} md={6} className={classes.info}>
-            <Typography variant="h6" component="h3">
-              Basic Information
-            </Typography>
-            <Typography className={classes.type}>Validity period of rights</Typography>
-            <Typography className={classes.typeValue}>
-              {project.basic_information[0]}
-            </Typography>
-            <Typography className={classes.type}>
-              Copyright trust
-            </Typography>
-            <Typography className={classes.typeValue}>
-              {project.basic_information[1]}
-            </Typography>
-            <Typography className={classes.type}>Trustee</Typography>
-            <Typography className={classes.typeValue}>
-              {project.basic_information[2]}
-            </Typography>
-          </GridItem>
-          <GridItem xs={12} md={6} className={classes.info}>
-            <Typography variant="h6" component="h3">
-              Digital Asset Revenue
-            </Typography>
-            <ChartistGraph
-                data={data}
-                options={options}
-                type={type}
-                listener={animation}
-            />
-          </GridItem>
-          <GridItem xs={12} md={6} className={classes.info}>
-            <Typography variant="h6" component="h3">
+        <div className={classes.infoWrap}>
+          <Typography variant="h5" component="h3" className={classes.info}>
+            Description
+          </Typography>
+          <Typography className={classes.infoText}>{project.scheme.metadata.description}</Typography>
+        </div>
+        <div className={classes.infoWrap}>
+          <Typography variant="h5" component="h3" className={classes.info}>
+            Total Supply
+          </Typography>
+          <Typography className={classes.infoText}>{parseInt(project.scheme.supply, 16)}</Typography>
+        </div>
+        <div className={classes.infoWrap}>
+          <Typography variant="h5" component="h3" className={classes.info}>
+            Exchange Rate
+          </Typography>
+          <Typography className={classes.infoText}>{`${project.fundingAssets[0].ratio} ${project.fundingAssets[0].assetName} = 1 Token`}</Typography>
+        </div>
+        {project.vote ?
+          <Fragment>
+            <Typography variant="h5" component="h3" className={classes.info}>
               Issue Voting
             </Typography>
             <FormControl component="fieldset" className={classes.formControl}>
               <RadioGroup
-                name="Issue Voting"
-                className={classes.group}
-                value={this.state.value}
-                onChange={this.handleChange}
+                  name="Issue Voting"
+                  className={classes.group}
+                  value={this.state.value}
+                  onChange={this.handleChange}
               >
                 {project.issue_voting.map((item, i) => {
                   return (
-                    <FormControlLabel
-                      key={`vote_${i}`}
-                      value={(i + 1).toString()}
-                      control={<Radio color="primary" />}
-                      label={item}
-                    />
+                      <FormControlLabel
+                          key={`vote_${i}`}
+                          value={(i + 1).toString()}
+                          control={<Radio color="primary" />}
+                          label={item}
+                      />
                   );
                 })}
               </RadioGroup>
               <Button
-                variant="contained"
-                size="medium"
-                color="primary"
-                className={classes.button}
-                onClick={this.handleClickOpen}
+                  variant="contained"
+                  size="medium"
+                  color="primary"
+                  className={classes.button}
+                  onClick={this.handleClickOpen}
               >
                 Vote
               </Button>
               <Dialog
-                open={this.state.open}
-                onClose={this.handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
               >
                 <DialogTitle id="alert-dialog-title">{"Vote"}</DialogTitle>
                 <DialogContent>
@@ -185,19 +173,33 @@ class MiddleInformationSection extends React.Component {
                 </DialogActions>
               </Dialog>
             </FormControl>
-          </GridItem>
-          <GridItem xs={12} md={6} className={classes.info}>
-            <Typography variant="h6" component="h3">
-              Digital revenue category breakdown
-            </Typography>
-            <Typography className={classes.category}>
-              Music streaming (Melon, Genie, Spotify, Apple Music, Amazon Music)
-            </Typography>
-            <Typography className={classes.category}>
-              Performance royalties (TV, radio)
-            </Typography>
-          </GridItem>
-        </GridContainer>
+          </Fragment>
+          : undefined }
+
+        {/*<GridContainer>*/}
+          {/*<GridItem xs={12} md={6} className={classes.info}>*/}
+            {/*<Typography variant="h6" component="h3">*/}
+              {/*Digital Asset Revenue*/}
+            {/*</Typography>*/}
+            {/*<ChartistGraph*/}
+                {/*data={data}*/}
+                {/*options={options}*/}
+                {/*type={type}*/}
+                {/*listener={animation}*/}
+            {/*/>*/}
+          {/*</GridItem>*/}
+          {/*<GridItem xs={12} md={6} className={classes.info}>*/}
+            {/*<Typography variant="h6" component="h3">*/}
+              {/*Digital revenue category breakdown*/}
+            {/*</Typography>*/}
+            {/*<Typography className={classes.category}>*/}
+              {/*Music streaming (Melon, Genie, Spotify, Apple Music, Amazon Music)*/}
+            {/*</Typography>*/}
+            {/*<Typography className={classes.category}>*/}
+              {/*Performance royalties (TV, radio)*/}
+            {/*</Typography>*/}
+          {/*</GridItem>*/}
+        {/*</GridContainer>*/}
       </div>
     );
   }

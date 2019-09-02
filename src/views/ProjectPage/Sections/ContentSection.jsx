@@ -76,8 +76,7 @@ class ContentSection extends React.Component {
     if (project.remain_token === 0) percent = 100;
     else
       percent = parseInt(
-        ((project.total_token - project.remain_token) / project.total_token) *
-          100
+        (1 - (parseInt(project.scheme.supply, 16) - project.soldToken) / parseInt(project.scheme.supply, 16)) * 100
       );
     return (
       <div className={classes.section}>
@@ -100,7 +99,7 @@ class ContentSection extends React.Component {
               >
                 Price
               </Typography>
-              <Typography component="p">{numberWithCommas(project.token_price)} KRW</Typography>
+              <Typography component="p">{`${project.fundingAssets[0].ratio} ${project.fundingAssets[0].assetName}`} </Typography>
             </GridItem>
             <GridItem xs={6} md={6}>
               <Typography
@@ -111,7 +110,7 @@ class ContentSection extends React.Component {
                 Total Value
               </Typography>
               <Typography component="p">
-                {numberWithCommas(project.token_price * project.total_token)} KRW
+                {`${numberWithCommas(parseInt(project.scheme.supply, 16) * project.fundingAssets[0].ratio)} ${project.fundingAssets[0].assetName}`}
               </Typography>
             </GridItem>
 
@@ -123,18 +122,18 @@ class ContentSection extends React.Component {
                       <img
                         style={{ width: "100%", display: "block" }}
                         className={classes.imgCardTop}
-                        src={project.album_img}
+                        src={project.scheme.metadata.icon_url}
                         alt="Card-img-cap"
                       />
                       <GridContainer>
                         <GridItem xs={6} md={6}>
                           <Typography align="left">
-                            Tokens remaining:{numberWithCommas(project.remain_token)}
+                            Tokens remaining:{numberWithCommas(parseInt(project.scheme.supply, 16) - project.soldToken)}
                           </Typography>
                         </GridItem>
                         <GridItem xs={6} md={6}>
                           <Typography align="right">
-                            Total Token:{numberWithCommas(project.total_token)}
+                            Total Token:{numberWithCommas(parseInt(project.scheme.supply, 16))}
                           </Typography>
                         </GridItem>
                       </GridContainer>
@@ -146,7 +145,6 @@ class ContentSection extends React.Component {
                       <Typography align="right">{percent}%</Typography>
                     </GridItem>
                     <GridItem xs={12} md={6}>
-                      <Typography>{project.album_intro}</Typography>
                       Price
                       <TextField
                         variant="outlined"

@@ -5,11 +5,11 @@ import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import classNames from "classnames";
 import projectPageStyle from "../../assets/jss/material-kit-react/views/projectPage";
 import ContentSection from "./Sections/ContentSection";
-import InformationSection from "./Sections/InformationSection";
 import Footer from "../../components/Footer/Footer";
 import * as apiClient from "../../apiClient";
 import MiddleInformationSection from "./Sections/MiddleInformationSection";
-import ClosedContentSection from "./Sections/ClosedContentSection";
+import InvestorSection from "./Sections/InvestorSection";
+import VotingSection from "./Sections/VotingSection";
 
 class ProjectPage extends React.Component {
   state = {
@@ -18,11 +18,11 @@ class ProjectPage extends React.Component {
 
   componentDidMount() {
     const { match } = this.props;
-    apiClient.get(
-      `?type=presale&action=get&project=${match.params.projectId}`,
+    apiClient.kodeBox(
+      `assets/${match.params.projectId}`,
       null,
       res => {
-        this.setState({ project: res.Items[0] });
+        this.setState({ project: res });
       }
     );
   }
@@ -49,17 +49,10 @@ class ProjectPage extends React.Component {
           <div className={classes.container}>
             {project !== null ? (
               <Fragment>
-                {project.project_status !== "open" ? (
-                  <ClosedContentSection project={project} />
-                ) : (
-                  <ContentSection project={project} />
-                )}
-                {project.project_status !== "open" ? (
-                  <MiddleInformationSection project={project} />
-                ) : (
-                  undefined
-                )}
-                <InformationSection project={project} />
+                <ContentSection project={project} />
+                <MiddleInformationSection project={project} />
+                <InvestorSection project={project} />
+                <VotingSection project={project} />
               </Fragment>
             ) : (
               undefined

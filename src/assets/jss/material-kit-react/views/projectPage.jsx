@@ -53,8 +53,14 @@ const projectPageStyle = {
   inputField: {
     textAlign:"right",
   },
+  infoWrap: {
+    margin: "0 0 30px"
+  },
   info: {
     margin : "0 0 15px"
+  },
+  infoText: {
+    fontSize:"1.1rem"
   },
   category: {
     width:"100%",
@@ -75,6 +81,9 @@ const projectPageStyle = {
   },
   membership : {
     whiteSpace : "pre-line"
+  },
+  table : {
+    margin: "0 0 30px 0"
   }
 };
 

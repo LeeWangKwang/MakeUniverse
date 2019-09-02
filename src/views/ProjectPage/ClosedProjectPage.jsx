@@ -4,10 +4,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import classNames from "classnames";
 import projectPageStyle from "../../assets/jss/material-kit-react/views/projectPage";
-import InformationSection from "./Sections/InformationSection";
 import Footer from "../../components/Footer/Footer";
 import ClosedContentSection from "./Sections/ClosedContentSection";
 import MiddleInformationSection from "./Sections/MiddleInformationSection";
+import InvestorSection from "./Sections/InvestorSection";
 
 class ClosedProjectPage extends React.Component {
   render() {
@@ -32,7 +32,7 @@ class ClosedProjectPage extends React.Component {
           <div className={classes.container}>
             <ClosedContentSection />
             <MiddleInformationSection />
-            <InformationSection />
+            <InvestorSection />
           </div>
         </div>
         <Footer />

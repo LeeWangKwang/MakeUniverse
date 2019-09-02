@@ -26,33 +26,33 @@ function numberWithCommas(x) {
 }
 
 const Item = props => {
-  const { album_img, data_value, total_token, remain_token, classes } = props;
-  let percent;
-  if (remain_token == 0) percent = 100;
-  else percent = parseInt(((total_token - remain_token) / total_token) * 100);
+  const { assetType, userId, name, scheme, fundingSoftCap, fundingHardCap, fundingAssets, fundingCloseAt, status, classes } = props;
+
   return (
     <GridItem xs={12} md={4}>
       <Card>
         <img
           style={{ width: "100%", display: "block" }}
           className={classes.imgCardTop}
-          src={album_img}
+          src={scheme.metadata.icon_url}
           alt="Card-img-cap"
         />
         <CardBody>
-          <h4 className={classes.cardTitle}>{data_value}</h4>
-          <div>Total Token : {numberWithCommas(total_token)}</div>
-          <p>Tokens Remaining : {numberWithCommas(remain_token)} </p>
-          <CustomLinearProgress
-            variant="determinate"
-            color="danger"
-            value={percent}
-          />
-          <p>{percent}%</p>
+          <h4 className={classes.cardTitle}>{scheme.metadata.name}</h4>
+          <h6>{scheme.metadata.description}</h6>
+          <p>Total Token : {numberWithCommas(parseInt(scheme.supply, 16))}</p>
+          {/*<div>Soft Cap : {numberWithCommas(1*fundingSoftCap)} </div>*/}
+          {/*<p>Hard Cap : {numberWithCommas(1*fundingHardCap)} </p>*/}
+          {/*<CustomLinearProgress*/}
+            {/*variant="determinate"*/}
+            {/*color="danger"*/}
+            {/*value={percent}*/}
+          {/*/>*/}
+          {/*<p>{percent}%</p>*/}
           <GridContainer justify="center">
             <Button
               component={Link}
-              to={`/projects/${data_value}`}
+              to={`/projects/${assetType}`}
               color="primary"
               round
             >
@@ -71,8 +71,8 @@ class PreSalesSection extends React.Component {
   };
 
   componentDidMount() {
-    apiClient.get(`?type=presale&action=get`, null, res => {
-      this.setState({ projects: res.Items.reverse() });
+    apiClient.kodeBox(`assets`, null, res => {
+      this.setState({ projects: res });
     });
   }
 
@@ -92,7 +92,7 @@ class PreSalesSection extends React.Component {
         <div>
           <GridContainer>
             {projects.map(p => (
-              <Item {...p} classes={classes} key={p.data_value} />
+              <Item {...p} classes={classes} key={p.assetType} />
             ))}
           </GridContainer>
         </div>
