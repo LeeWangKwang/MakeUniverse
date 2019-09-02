@@ -44,13 +44,14 @@ class LoginPage extends React.Component {
       700
     );
   }
-  Login() {
-    apiClient.get(
-      `?type=user&action=login&userId=${this.state.email}`,
-      null,
-      res => {
-        window.location = "/";
-      }
+  Login(email, password) {
+    apiClient.post(
+      `user/session`,
+        {
+          "email":email,
+          "password":password,
+          "remember":true
+        },
     );
   }
 
@@ -61,7 +62,7 @@ class LoginPage extends React.Component {
   };
 
   fillTheBlank(){
-    this.setState({email: "kylekim@gmail.com", password:"12345678"})
+    this.setState({email: "makestar-dummy1@kodebox.io", password:"makestar1"})
   }
 
   render() {
@@ -175,16 +176,22 @@ class LoginPage extends React.Component {
                       >
                         Fill
                       </Button>
-                      <Button
-                        simple
-                        color="primary"
-                        size="lg"
-                        onClick={() => {
-                          this.Login();
-                        }}
+                      <Link
+                          to="/"
+                          color="transparent"
+                          className={classes.navLink}
                       >
-                        Login
-                      </Button>
+                        <Button
+                          simple
+                          color="primary"
+                          size="lg"
+                          onClick={() => {
+                            this.Login(this.state.email, this.state.password);
+                          }}
+                        >
+                          Login
+                        </Button>
+                      </Link>
                       <Link
                         to="/signUp-page"
                         color="transparent"

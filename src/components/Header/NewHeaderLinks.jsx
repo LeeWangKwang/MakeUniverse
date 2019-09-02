@@ -25,17 +25,18 @@ import headerLinksStyle from "assets/jss/material-kit-react/components/headerLin
 
 class NewHeaderLinks extends React.Component {
   state = {
-    isLogin: 0
-  };
+    isLogin: undefined
+  }
 
   componentDidMount() {
-    apiClient.get(`?type=user&action=isLogin`, null, res => {
-      this.setState({ isLogin: res.Items[0].isLogin });
+    apiClient.get(`user/my`, null, res => {
+      this.setState({ isLogin: res.id });
+      console.log(this.state.isLogin)
     });
   }
 
   Logout() {
-    apiClient.get(`?type=user&action=logout`, null, res => {
+    apiClient.get(``, null, res => {
       window.location = "/";
     });
   }
@@ -43,6 +44,8 @@ class NewHeaderLinks extends React.Component {
   render() {
     const { classes } = this.props;
     const { isLogin } = this.state;
+
+    console.log(isLogin)
     return (
       <List className={classes.list}>
         {/* <ListItem className={classes.listItem}>
@@ -61,7 +64,7 @@ class NewHeaderLinks extends React.Component {
           </Button>
         </ListItem> */}
         <ListItem className={classes.listItem}>
-          {isLogin == 0 ? (
+          {!isLogin ? (
             <Link
               to="/login-page"
               color="transparent"
