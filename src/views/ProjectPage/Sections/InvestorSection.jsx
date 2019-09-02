@@ -40,8 +40,6 @@ class InvestorSection extends React.Component {
     const { classes, project } = this.props;
     const { investor} = this.state;
 
-    console.log(investor)
-
     return (
       <React.Fragment>
         <Typography variant="h5" component="h3" className={classes.info}>

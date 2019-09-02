@@ -31,7 +31,6 @@ class NewHeaderLinks extends React.Component {
   componentDidMount() {
     apiClient.get(`user/my`, null, res => {
       this.setState({ isLogin: res.id });
-      console.log(this.state.isLogin)
     });
   }
 
@@ -45,7 +44,6 @@ class NewHeaderLinks extends React.Component {
     const { classes } = this.props;
     const { isLogin } = this.state;
 
-    console.log(isLogin)
     return (
       <List className={classes.list}>
         {/* <ListItem className={classes.listItem}>
