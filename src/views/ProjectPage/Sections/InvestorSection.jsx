@@ -59,7 +59,7 @@ class InvestorSection extends React.Component {
             <TableBody>
               {investor && investor.length < 1 ?
                   <TableRow>
-                    <TableCell align="center" colspan="5">Empty</TableCell>
+                    <TableCell align="center" colSpan="5">Empty</TableCell>
                   </TableRow>
                   : investor && investor.map(row => (
                       <TableRow key={row.investor.id}>

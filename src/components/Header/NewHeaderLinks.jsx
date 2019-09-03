@@ -35,9 +35,7 @@ class NewHeaderLinks extends React.Component {
   }
 
   Logout() {
-    apiClient.get(``, null, res => {
-      window.location = "/";
-    });
+    document.cookie = "session=; domain=localhost; expires=Thu, 01 Jan 1970 00:00:00 GMT"
   }
 
   render() {

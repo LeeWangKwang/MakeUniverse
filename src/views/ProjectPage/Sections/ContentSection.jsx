@@ -39,21 +39,36 @@ function numberWithCommas(x) {
 class ContentSection extends React.Component {
   state = {
     quantity: 1,
-    price: 10000,
+    price:'',
     open: false,
     userId: null,
-    transactions: null
+    transactions: null,
+    addressInfo:null,
+    user:null
   };
 
   componentDidMount() {
     apiClient.get(`/user/my`, null, res => {
-      this.setState({userId:res.id });
+      this.setState({userId:res.id, user:res.investor});
     });
+    apiClient.get('/user/addresses', null, res => {
+      this.setState({addressInfo:res})
+    })
+    this.setState({price:this.props.project.fundingAssets[0].ratio + ' '+ this.props.project.fundingAssets[0].assetName})
   }
 
   buyTokens(quantity) {
     this.handleClose()
-    apiClient.get(`?type=presale&action=buy&project=${this.props.project.data_value}&userId=${this.state.userId}&buying=${quantity}&remaining=${this.props.project.remain_token}`, null, res =>{
+    let investAmount = quantity * this.props.project.fundingAssets[0].ratio
+    let payload = {
+      address:this.state.addressInfo[0].address,
+      asset:this.props.project.assetType,
+      investAmount:investAmount.toString(),
+      investAssetType:this.props.project.fundingAssets[0].assetType,
+      legalName:this.state.user.legalName,
+      nationality:this.state.user.nationality
+    }
+    apiClient.post(`/asset/${this.props.project.assetType}/investment`, payload, res =>{
       this.setState({transactions: res.Items});
     });
   }
@@ -148,7 +163,7 @@ class ContentSection extends React.Component {
                         variant="outlined"
                         id="filled-disabled"
                         fullWidth
-                        defaultValue={numberWithCommas(price)}
+                        value={price}
                         className={classNames(
                           classes.margin,
                           classes.textField
@@ -173,7 +188,6 @@ class ContentSection extends React.Component {
                         variant="outlined"
                         type="number"
                         fullWidth
-                        // defaultValue={""}
                         value={parseInt(quantity)}
                         onChange={this.handleChange("quantity")}
                         InputProps={{
@@ -185,7 +199,7 @@ class ContentSection extends React.Component {
                         variant="outlined"
                         id="filled-disabled"
                         fullWidth
-                        value={numberWithCommas(price * quantity)}
+                        value={`${numberWithCommas(project.fundingAssets[0].ratio * quantity)} ${project.fundingAssets[0].assetName}`}
                         className={classNames(
                           classes.margin,
                           classes.textField
