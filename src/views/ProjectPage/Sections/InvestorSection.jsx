@@ -38,7 +38,7 @@ class InvestorSection extends React.Component {
   }
 
   render() {
-    const { classes, project } = this.props;
+    const { classes } = this.props;
     const { investor} = this.state;
 
     return (

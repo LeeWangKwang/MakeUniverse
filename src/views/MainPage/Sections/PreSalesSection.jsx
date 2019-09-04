@@ -7,7 +7,6 @@ import Card from "components/Card/Card.jsx";
 import { cardTitle } from "assets/jss/material-kit-react.jsx";
 import CardBody from "../../../components/Card/CardBody";
 import Button from "../../../components/CustomButtons/Button";
-import CustomLinearProgress from "../../../components/CustomLinearProgress/CustomLinearProgress";
 import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
 import { Link } from "react-router-dom";
@@ -26,7 +25,7 @@ function numberWithCommas(x) {
 }
 
 const Item = props => {
-  const { assetType, userId, name, scheme, fundingSoftCap, fundingHardCap, fundingAssets, fundingCloseAt, status, classes } = props;
+  const { assetType, scheme, classes } = props;
 
   return (
     <GridItem xs={12} md={4}>
@@ -41,14 +40,6 @@ const Item = props => {
           <h4 className={classes.cardTitle}>{scheme.metadata.name}</h4>
           <h6>{scheme.metadata.description}</h6>
           <p>Total Token : {numberWithCommas(parseInt(scheme.supply, 16))}</p>
-          {/*<div>Soft Cap : {numberWithCommas(1*fundingSoftCap)} </div>*/}
-          {/*<p>Hard Cap : {numberWithCommas(1*fundingHardCap)} </p>*/}
-          {/*<CustomLinearProgress*/}
-            {/*variant="determinate"*/}
-            {/*color="danger"*/}
-            {/*value={percent}*/}
-          {/*/>*/}
-          {/*<p>{percent}%</p>*/}
           <GridContainer justify="center">
             <Button
               component={Link}

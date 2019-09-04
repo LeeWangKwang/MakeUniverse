@@ -37,7 +37,7 @@ class VotingSection extends React.Component {
   }
 
   render() {
-    const { classes, project } = this.props;
+    const { classes } = this.props;
     const { vote} = this.state;
 
     return (
