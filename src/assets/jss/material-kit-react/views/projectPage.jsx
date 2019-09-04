@@ -90,6 +90,7 @@ const projectPageStyle = {
     textAlign:"center",
     margin:"0 auto",
     minWidth:"320px",
+    maxWidth:"500px",
     width: "40%",
     backgroundColor: "#ffffff",
   },

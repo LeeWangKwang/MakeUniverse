@@ -62,7 +62,7 @@ class LoginPage extends React.Component {
   };
 
   fillTheBlank(){
-    this.setState({email: "makestar-dummy1@kodebox.io", password:"makestar1"})
+    this.setState({email: "makestar-dummy2@kodebox.io", password:"makestar2"})
   }
 
   render() {

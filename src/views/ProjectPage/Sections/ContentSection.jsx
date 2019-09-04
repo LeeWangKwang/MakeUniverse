@@ -144,7 +144,7 @@ class ContentSection extends React.Component {
               <Card>
                 <CardBody>
                   <GridContainer>
-                    <GridItem xs={12} md={6}>
+                    <GridItem xs={12} md={percent === 100 ? 12 : 6}>
                       <img
                         style={{ width: "100%", display: "block", height: "auto" }}
                         className={classes.imgCardTop}
@@ -170,7 +170,7 @@ class ContentSection extends React.Component {
                       />
                       <Typography align="right">{percent}%</Typography>
                     </GridItem>
-                    <GridItem xs={12} md={6}>
+                    <GridItem xs={12} md={6} style={percent === 100 ? {display:"none"} : undefined}>
                       Price
                       <TextField
                         variant="outlined"
@@ -255,7 +255,9 @@ class ContentSection extends React.Component {
                             No
                           </Button>
                           <Button
-                            onClick={ () => this.buyTokens(quantity)}
+                            onClick={(e) => {
+                              this.buyTokens(quantity)
+                            }}
                             color="primary"
                             autoFocus
                           >
