@@ -41,7 +41,7 @@ function numberWithCommas(x) {
 
 class ContentSection extends React.Component {
   state = {
-    quantity: 1,
+    quantity: 0,
     price:'',
     open: false,
     userId: null,
@@ -95,6 +95,12 @@ class ContentSection extends React.Component {
   };
 
   handleChange = prop => event => {
+    if(prop === "quantity" && event.target.value > this.state.addressInfo[0].assets[0].quantity / this.props.project.fundingAssets[0].ratio) {
+      event.target.value = this.state.addressInfo[0].assets[0].quantity / this.props.project.fundingAssets[0].ratio
+
+      console.log("you cannot buy over " + event.target.value)
+    }
+
     this.setState({ [prop]: event.target.value });
   };
   render() {
