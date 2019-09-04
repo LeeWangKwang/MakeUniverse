@@ -12,6 +12,7 @@ import workStyle from "../../../assets/jss/material-kit-react/views/landingPageS
 import * as apiClient from "../../../apiClient";
 import moment from "moment";
 import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link/Link";
 
 const style = {
   ...imagesStyles,
@@ -64,7 +65,9 @@ class InvestorSection extends React.Component {
                   : investor && investor.map(row => (
                       <TableRow key={row.investor.id}>
                         <TableCell component="th" scope="row" align="center">
-                          {moment(row.createdAt).format('YYYY-MM-DD hh:mm:ss')}
+                          <Link href={`https://corgi.codechain.io/explorer/addr-asset/${row.address}`}>
+                            {moment(row.createdAt).format('YYYY-MM-DD hh:mm:ss')}
+                          </Link>
                         </TableCell>
                         <TableCell align="center">{row.investor.name}</TableCell>
                         <TableCell align="center">{row.investor.nationality}</TableCell>

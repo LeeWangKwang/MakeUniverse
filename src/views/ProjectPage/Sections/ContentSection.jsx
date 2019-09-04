@@ -24,6 +24,9 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
 import * as apiClient from "../../../apiClient";
+import modalStyle from "assets/jss/material-kit-react/modalStyle.jsx";
+import walletQr from "assets/img/wallet-qr.png";
+import Modal from "@material-ui/core/Modal/Modal";
 
 const style = {
   ...imagesStyles,
@@ -44,8 +47,17 @@ class ContentSection extends React.Component {
     userId: null,
     transactions: null,
     addressInfo:null,
-    user:null
+    user:null,
+    setOpen:false,
   };
+  modalOpen = () => {
+    this.setState({setOpen:true});
+  };
+
+  modalClose = () => {
+    this.setState({setOpen:false});
+  };
+
 
   componentDidMount() {
     apiClient.get(`/user/my`, null, res => {
@@ -71,6 +83,7 @@ class ContentSection extends React.Component {
     apiClient.post(`/asset/${this.props.project.assetType}/investment`, payload, res =>{
       this.setState({transactions: res.Items});
     });
+    this.modalOpen();
   }
 
   handleClickOpen = () => {
@@ -257,6 +270,25 @@ class ContentSection extends React.Component {
             </GridItem>
           </GridContainer>
         </div>
+        <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={this.state.setOpen}
+            onClose={this.modalClose}
+        >
+          <div style={modalStyle} className={classes.paper}>
+            <h2 id="simple-modal-title" className={classes.modalTitle}>
+              구매가 완료되었습니다.
+            </h2>
+            <img
+                className={classes.modalImage}
+                src={walletQr}
+            />
+            <p id="simple-modal-description" className={classes.modalText}>
+              위의 QR Code를 스캔하여 지갑을 설치해 주세요.
+            </p>
+          </div>
+        </Modal>
       </div>
     );
   }

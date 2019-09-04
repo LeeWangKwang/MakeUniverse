@@ -85,7 +85,29 @@ const projectPageStyle = {
   },
   table : {
     margin: "0 0 30px 0"
-  }
+  },
+  paper : {
+    textAlign:"center",
+    margin:"0 auto",
+    minWidth:"320px",
+    width: "40%",
+    backgroundColor: "#ffffff",
+  },
+  modalTitle : {
+    fontSize:"2.25rem",
+    fontWeight:900,
+  },
+  modalText : {
+    fontSize:"1rem",
+    fontWeight:600,
+  },
+  modalImage : {
+    width:"100%",
+    height:"100%",
+  },
+  root : {
+    overflow:"auto",
+  },
 };
 
 export default projectPageStyle;
