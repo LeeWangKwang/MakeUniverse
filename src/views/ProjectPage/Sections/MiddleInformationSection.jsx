@@ -109,6 +109,26 @@ class MiddleInformationSection extends React.Component {
         </div>
         <div className={classes.infoWrap}>
           <Typography variant="h5" component="h3" className={classes.info}>
+            Notice
+          </Typography>
+          <Typography className={classes.infoText}>
+            [부분 소유권 보유 혜택]<br/><br/>
+            - 해당 음원의 부분소유권을 보유함으로써, 향후 아티스트에 관련한 이벤트 발생시 투표 권한을 갖게 됩니다 (예시. 아육대 출전! 플랜카드 슬로건 셀렉에 대한 투표권 행사 가능!)<br/>
+            - 구매하신 부분소유권에 대한 계약증명서는 구매 시점부터 약 1년 후 저작인접권 수익률에 따라 70년동안 소량의 수익이 발생할 수 있습니다.<br/>
+            <br/>
+            [구매방법]<br/><br/>
+            - 위에 창에서 구매할 부분소유권 계약증명서의 개수(Quantity)를 선택하세요 (*개수에 따라 달라지는 가격을 확인하세요)<br/>
+            - 구매버튼을 누르면 뜨는 QR코드를 통해 앱을 다운로드 받으신 후, 회원 가입을 진행하세요<br/>
+            - 안내받은 이메일 링크에 지갑주소를 입력하여 CCC를 받으세요 (CCC: 부분소유권 구매를 위한 코인)<br/>
+            - 해당 프로젝트를 선택 후 구매를 진행하세요<br/>
+            <br/>
+            [유의사항]<br/><br/>
+            - 가입한 정보 및 key 주소를 항상 백업하세요. Key를 잃어버리면 음원의 부분소유권 및 보유하고 계신 금액을 다시 찾을 수 없습니다.<br/>
+            - 부분소유권 구매자 간 서로 계약증명서 거래가 가능합니다. 거래는 모든 플랫폼상에 저장되오니 이용에 차질이 없으시길 바랍니다.<br/>
+          </Typography>
+        </div>
+        <div className={classes.infoWrap}>
+          <Typography variant="h5" component="h3" className={classes.info}>
             Total Supply
           </Typography>
           <Typography className={classes.infoText}>{parseInt(project.scheme.supply, 16)}</Typography>
