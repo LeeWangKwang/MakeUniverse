@@ -61,7 +61,8 @@ const projectPageStyle = {
     margin : "0 0 15px"
   },
   infoText: {
-    fontSize:"1.1rem"
+    fontSize:"1.1rem",
+    whiteSpace:"pre-wrap",
   },
   category: {
     width:"100%",
