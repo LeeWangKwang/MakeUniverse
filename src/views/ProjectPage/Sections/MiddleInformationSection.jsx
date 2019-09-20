@@ -119,6 +119,16 @@ class MiddleInformationSection extends React.Component {
           </Typography>
           <Typography className={classes.infoText}>{`${project.fundingAssets[0].ratio} ${project.fundingAssets[0].assetName} = 1 Token`}</Typography>
         </div>
+        <div className={classes.infoWrap}>
+          <Typography variant="h5" component="h3" className={classes.info}>
+            Attachments
+          </Typography>
+          {project.scheme.metadata.attachments ? project.scheme.metadata.attachments.map((a, i) => {
+            return (
+                <a href={a.url}>{a.name}</a>
+            )
+          }) : undefined}
+        </div>
         {project.vote ?
           <Fragment>
             <Typography variant="h5" component="h3" className={classes.info}>
