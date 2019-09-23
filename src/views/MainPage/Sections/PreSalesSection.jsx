@@ -14,11 +14,13 @@ import { Link } from "react-router-dom";
 import workStyle from "assets/jss/material-kit-react/views/landingPageSections/workStyle.jsx";
 import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
 import * as apiClient from "../../../apiClient";
+import projectPageStyle from "../../../assets/jss/material-kit-react/views/projectPage";
 
 const style = {
   ...imagesStyles,
   cardTitle,
-  ...workStyle
+  ...workStyle,
+  ...projectPageStyle
 };
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -38,7 +40,7 @@ const Item = props => {
         />
         <CardBody>
           <h4 className={classes.cardTitle}>{scheme.metadata.name}</h4>
-          <h6>{scheme.metadata.description}</h6>
+          <h6 className={classes.cardDescription}>{scheme.metadata.description}</h6>
           <p>Total Token : {numberWithCommas(parseInt(scheme.supply, 16))}</p>
           <GridContainer justify="center">
             <Button

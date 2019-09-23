@@ -110,6 +110,9 @@ const projectPageStyle = {
   root : {
     overflow:"auto",
   },
+  cardDescription : {
+    whiteSpace:"pre-wrap",
+  },
 };
 
 export default projectPageStyle;
