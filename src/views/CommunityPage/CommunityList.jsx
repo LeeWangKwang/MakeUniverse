@@ -21,6 +21,7 @@ import classNames from "classnames";
 import projectPageStyle from "../../assets/jss/material-kit-react/views/projectPage";
 import Typography from "@material-ui/core/Typography/Typography";
 import communityPageStyle from "../../assets/jss/material-kit-react/views/communityPageStyles";
+import Button from "@material-ui/core/Button/Button";
 
 const style = {
   ...imagesStyles,
@@ -50,7 +51,18 @@ class CommunityList extends React.Component {
           />
           <div className={classNames(classes.main)}>
             <div className={classes.container}>
-              <h2 className={classes.communityTitle}>Community</h2>
+              <h2 className={classes.communityTitle}>
+                Community
+                <Button
+                    variant="contained"
+                    size="large"
+                    color="primary"
+                    className={classes.button}
+                    // onClick={this.handleClickOpen}
+                >
+                  Post
+                </Button>
+              </h2>
               <Paper className={classes.root}>
                 <Table className={classes.table}>
                   <TableHead>

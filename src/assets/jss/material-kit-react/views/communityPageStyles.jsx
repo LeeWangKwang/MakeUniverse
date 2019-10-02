@@ -13,7 +13,24 @@ const communityPageStyle = {
     paddingTop:"20px",
   },
   commentInput: {
-    width:"90%",
+    padding:"0 10px",
+    width:"100%",
+  },
+  commentsWrap : {
+    backgroundColor:"#fff",
+    padding:"10px",
+    color:"#000",
+  },
+  commentId : {
+    display:"inline-block",
+    width:"90px",
+  },
+  commentContent : {
+    display:"inline-block",
+  },
+  comment : {
+    marginBottom:"5px",
+    borderBottom:"solid 1px #ccc",
   }
 };
 

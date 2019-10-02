@@ -19,6 +19,9 @@ import Footer from "../../components/Footer/Footer";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
+import TableRow from "@material-ui/core/TableRow/TableRow";
+import TableCell from "@material-ui/core/TableCell/TableCell";
+import {Link} from "react-router-dom";
 
 const style = {
   ...imagesStyles,
@@ -125,6 +128,17 @@ class CommunityPage extends React.Component {
                       )
                     }}
                 />
+              </div>
+              <div className={classes.commentsWrap}>
+                {community && community.comment && community.comment.length > 0 ?
+                    community.comment.map(row => (
+                        <div className={classes.comment}>
+                          <div className={classes.commentId}>{row.author}</div>
+                          <div className={classes.commentContent}>{row.contents}</div>
+                        </div>
+                    ))
+                    : undefined
+                }
               </div>
             </div>
           </div>
