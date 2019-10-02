@@ -15,6 +15,7 @@ import landingPageStyle from "../../assets/jss/material-kit-react/views/landingP
 import ContactUsSection from "./Sections/ContactUsSection";
 import PartnerSection from "./Sections/PartnerSection";
 import TeamSection from "./Sections/TeamSection";
+import CommunitySection from "../CommunityPage/CommunityList";
 
 class MainPage extends React.Component {
   render() {

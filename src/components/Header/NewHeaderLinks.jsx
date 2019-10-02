@@ -71,6 +71,14 @@ class NewHeaderLinks extends React.Component {
           </Button>
         </ListItem> */}
         <ListItem className={classes.listItem}>
+          <Link
+              to="/community"
+              color="transparent"
+              className={classes.navLink}
+          >
+            Community
+          </Link>
+
           {!isLogin > 0 ? (
             <Link
               to="/login-page"
