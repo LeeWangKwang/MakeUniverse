@@ -295,6 +295,10 @@ class ContentSection extends React.Component {
             <p id="simple-modal-description" className={classes.modalText}>
               위의 QR Code를 스캔하여 지갑을 설치해 주세요.
             </p>
+            <div className={classes.modalText}>
+              QR Code 스캔이 안될시 밑에 버튼을 클릭하여 다운받아 주세요
+            </div>
+            <a className={classes.modalText} href={"https://s3-us-west-1.amazonaws.com/universe-scenario.makestar.com/codechain-wallet-test-ec1da79797694f1a80b8f9c7963da668-signed.apk"}>지갑 다운받기</a>
           </div>
         </Modal>
       </div>
