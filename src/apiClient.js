@@ -57,14 +57,12 @@ export function kodeBox(url, params, resFunc) {
       .then(() => {});
 }
 
-export function kodeBoxPost(url, params, resFunc) {
+export function kodeBoxPost(url, params, resFunc = () => {}) {
   let api = 'https://r1it7wjcz8.execute-api.ap-northeast-1.amazonaws.com/dev/'
   console.log(params)
   axios
       .post(api + url, { params })
       .then(response => {
-        console.log(response)
-        console.log(response.data)
         resFunc(response.data);
       })
       .catch(error => {

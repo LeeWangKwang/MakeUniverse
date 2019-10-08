@@ -56,6 +56,9 @@ class CommunityPost extends React.Component {
           author:this.state.user,
           title:this.state.title,
           content:this.state.content,
+        },
+        res => {
+          this.props.history.push('/community')
         }
     );
   }
@@ -131,8 +134,6 @@ class CommunityPost extends React.Component {
                   color="primary"
                   className={classNames(classes.button, classes.postBtn)}
                   onClick={() => {this.postCommunity()}}
-                  component={Link}
-                  to={'/community'}
               >
                 Post
               </Button>
