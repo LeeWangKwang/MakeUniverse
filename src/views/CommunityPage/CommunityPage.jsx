@@ -68,7 +68,7 @@ class CommunityPage extends React.Component {
             `community/${communityId}`,
             null,
             res => {
-              this.setState({ community: res });
+              this.setState({ community: res[0] });
             }
           );
         }
