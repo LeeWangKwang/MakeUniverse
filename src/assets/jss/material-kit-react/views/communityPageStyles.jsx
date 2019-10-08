@@ -1,6 +1,15 @@
 import { container, title } from "assets/jss/material-kit-react.jsx";
 
 const communityPageStyle = {
+  communityPost:{
+    paddingBottom:"60px"
+  },
+  postBtn: {
+    marginRight:"10px"
+  },
+  cancelBtn: {
+    marginRight:"10px"
+  },
   communityContent: {
     padding:"40px 0",
     whiteSpace:"pre-line",

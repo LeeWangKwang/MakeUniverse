@@ -17,6 +17,7 @@ import ProjectPage from "./views/ProjectPage/ProjectPage";
 import ClosedProjectPage from "./views/ProjectPage/ClosedProjectPage";
 import CommunityPage from "./views/CommunityPage/CommunityPage";
 import CommunityList from "./views/CommunityPage/CommunityList";
+import CommunityPost from "./views/CommunityPage/CommunityPost";
 
 const hist = createBrowserHistory();
 
@@ -31,6 +32,7 @@ ReactDOM.render(
       <Route path="/projects/:projectId" component={ProjectPage} />
       <Route path="/closed-project" component={ClosedProjectPage} />
       {/* <Route path="/main" component={MainPage} /> */}
+      <Route path="/community/post" component={CommunityPost} />
       <Route path="/community/:communityId" component={CommunityPage} />
       <Route path="/community" component={CommunityList} />
       <Route path="/" component={MainPage} />

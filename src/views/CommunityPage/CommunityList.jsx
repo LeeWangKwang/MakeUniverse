@@ -22,6 +22,7 @@ import projectPageStyle from "../../assets/jss/material-kit-react/views/projectP
 import Typography from "@material-ui/core/Typography/Typography";
 import communityPageStyle from "../../assets/jss/material-kit-react/views/communityPageStyles";
 import Button from "@material-ui/core/Button/Button";
+import * as apiClient from "../../apiClient";
 
 const style = {
   ...imagesStyles,
@@ -32,8 +33,23 @@ const style = {
 };
 
 class CommunityList extends React.Component {
+
+  state = {
+    community: null
+  };
+
+  componentDidMount(){
+    apiClient.kodeBox(
+        `community/`,
+        null,
+        res => {
+          this.setState({ community: res });
+        }
+    );
+  }
   render() {
     const { classes, ...rest } = this.props;
+    const { community } = this.state
     const dashboardRoutes = [];
     return (
         <div className={classes.section}>
@@ -54,6 +70,8 @@ class CommunityList extends React.Component {
               <h2 className={classes.communityTitle}>
                 Community
                 <Button
+                    component={Link}
+                    to={'/community/post'}
                     variant="contained"
                     size="large"
                     color="primary"
@@ -73,11 +91,11 @@ class CommunityList extends React.Component {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {community && community.thread && community.thread.length > 0 ?
-                        community.thread.map(row => (
-                            <TableRow key={row.id}>
+                    {community ?
+                        community.map(row => (
+                            <TableRow key={row.Idx}>
                               <TableCell component="th" scope="row" align="left">
-                                <Link to={`/community/${row.id}`} className={classes.link}>
+                                <Link to={`/community/${row.Idx}`} className={classes.link}>
                                   {row.title}
                                 </Link>
                               </TableCell>
@@ -87,7 +105,7 @@ class CommunityList extends React.Component {
                         ))
                         :
                         <TableRow>
-                          <TableCell align="center" colspan="3">Empty</TableCell>
+                          <TableCell align="center" colSpan="3">Empty</TableCell>
                         </TableRow>
                     }
                   </TableBody>
