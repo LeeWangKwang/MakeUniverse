@@ -58,9 +58,9 @@ class CommunityPage extends React.Component {
     const { match: { params: { communityId } } } = this.props;
     if (this.state.user !== null) {
       apiClient.kodeBoxPost(
-        `community/${communityId}/reply`,
+        `community/${communityId}/comment`,
         {
-          author:this.state.user.author,
+          author:this.state.user.name,
           content:this.state.commentText
         },
         res => {
@@ -171,7 +171,7 @@ class CommunityPage extends React.Component {
                         size="large"
                         color="primary"
                         className={classes.button}
-                        // onClick={this.handleClickOpen}
+                        onClick={() => this.postComment()}
                       >
                         Post
                       </Button>
@@ -184,7 +184,7 @@ class CommunityPage extends React.Component {
                   community.comment.map(row => (
                     <div className={classes.comment}>
                       <div className={classes.commentId}>{row.author}</div>
-                      <div className={classes.commentContent}>{row.contents}</div>
+                      <div className={classes.commentContent}>{row.content}</div>
                     </div>
                   ))
                   : undefined
