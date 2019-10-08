@@ -58,10 +58,10 @@ class CommunityPage extends React.Component {
     const { match: { params: { communityId } } } = this.props;
     if (this.state.user !== null) {
       apiClient.kodeBoxPost(
-        `community/${communityId}/comment`,
+        `community/${communityId}/reply`,
         {
           author:this.state.user.author,
-          text:this.state.commentText
+          content:this.state.commentText
         },
         res => {
           apiClient.kodeBox(
