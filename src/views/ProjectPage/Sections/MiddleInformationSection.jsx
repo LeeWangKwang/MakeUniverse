@@ -152,6 +152,12 @@ class MiddleInformationSection extends React.Component {
             )
           }) : undefined}
         </div>
+        <div className={classes.infoWrap}>
+          <Typography variant="h5" component="h3" className={classes.info}>
+            Wallet
+          </Typography>
+          <a className={classes.modalText} href={"https://s3-us-west-1.amazonaws.com/universe-scenario.makestar.com/codechain-wallet-test-ec1da79797694f1a80b8f9c7963da668-signed.apk"}>지갑 다운받기</a>
+        </div>
         {project.vote ?
           <Fragment>
             <Typography variant="h5" component="h3" className={classes.info}>
