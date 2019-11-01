@@ -95,10 +95,18 @@ class ContentSection extends React.Component {
   };
 
   handleChange = prop => event => {
-    if(prop === "quantity" && event.target.value > this.state.addressInfo[0].assets[0].quantity / this.props.project.fundingAssets[0].ratio) {
-      event.target.value = this.state.addressInfo[0].assets[0].quantity / this.props.project.fundingAssets[0].ratio
+    if(prop === "quantity") {
+      let CCCBalance = 0;
+      for(let i = 0 ; i < this.state.addressInfo[0].assets.length; i ++){
+        if(this.state.addressInfo[0].assets[i].type === "0000000000000000000000000000000000000000"){
+          CCCBalance = 1 * this.state.addressInfo[0].assets[i].quantity
+        }
+      }
+      if(event.target.value > CCCBalance / this.props.project.fundingAssets[0].ratio){
+        event.target.value = CCCBalance / this.props.project.fundingAssets[0].ratio
 
-      console.log("you cannot buy over " + event.target.value)
+        console.log("you cannot buy over " + event.target.value)
+      }
     }
 
     this.setState({ [prop]: event.target.value });
