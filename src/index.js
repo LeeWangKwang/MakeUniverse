@@ -11,6 +11,8 @@ import "assets/scss/material-kit-react.scss?v=1.4.0";
 // import ProfilePage from "views/ProfilePage/ProfilePage.jsx";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
 import MainPage from "views/MainPage/MainPage.jsx";
+import ConsolePage from "views/ConsolePage/ConsolePage.jsx";
+
 import SignUpPage from "./views/SignUpPage/SignUpPage";
 import KycPage from "./views/SignUpPage/KycPage";
 import ProjectPage from "./views/ProjectPage/ProjectPage";
@@ -35,7 +37,11 @@ ReactDOM.render(
       <Route path="/community/post" component={CommunityPost} />
       <Route path="/community/:communityId" component={CommunityPage} />
       <Route path="/community" component={CommunityList} />
+      <Route path="/console" component={ConsolePage} />
+
       <Route path="/" component={MainPage} />
+
+
     </Switch>
   </Router>,
   document.getElementById("root")

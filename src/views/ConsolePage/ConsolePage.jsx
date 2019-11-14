@@ -1,23 +1,18 @@
 import React from "react";
-import PreSalesSection from "./Sections/PreSalesSection";
-import MainChartSection from "./Sections/MainChartSection";
+
 import Header from "../../components/Header/Header";
-import Parallax from "../../components/Parallax/Parallax";
-import GridContainer from "../../components/Grid/GridContainer";
-import GridItem from "../../components/Grid/GridItem";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import classNames from "classnames";
 import Footer from "../../components/Footer/Footer";
-import ProductSection from "../LandingPage/Sections/ProductSection";
+
 import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import landingPageStyle from "../../assets/jss/material-kit-react/views/landingPage";
-import ContactUsSection from "./Sections/ContactUsSection";
-import PartnerSection from "./Sections/PartnerSection";
-import TeamSection from "./Sections/TeamSection";
-import CommunitySection from "../CommunityPage/CommunityList";
 
-class MainPage extends React.Component {
+import IssueAssetSection from "./Sections/IssueAssetSection";
+
+
+class ConsolePage extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
 
@@ -53,8 +48,7 @@ class MainPage extends React.Component {
 
         <div className={classNames(classes.main)}>
           <div className={classes.container}>
-            <PreSalesSection />
-            {/*<MainChartSection />*/}
+              <IssueAssetSection />
           </div>
         </div>
 
@@ -79,4 +73,4 @@ class MainPage extends React.Component {
   }
 }
 
-export default withStyles(landingPageStyle)(MainPage);
+export default withStyles(landingPageStyle)(ConsolePage);
