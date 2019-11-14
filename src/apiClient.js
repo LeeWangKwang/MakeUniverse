@@ -46,6 +46,7 @@ export function post(url, params, resFunc) {
 
 export function kodeBox(url, params, resFunc) {
   let api = 'https://r1it7wjcz8.execute-api.ap-northeast-1.amazonaws.com/dev/'
+
   axios
       .get(api + url, { params })
       .then(response => {
@@ -59,6 +60,7 @@ export function kodeBox(url, params, resFunc) {
 
 export function kodeBoxPost(url, params, resFunc = () => {}) {
   let api = 'https://r1it7wjcz8.execute-api.ap-northeast-1.amazonaws.com/dev/'
+
   console.log(params)
   axios
       .post(api + url, { params })

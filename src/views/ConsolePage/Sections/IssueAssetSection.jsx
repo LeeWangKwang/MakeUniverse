@@ -8,9 +8,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import * as apiClient from "../../../apiClient";
 
 import workStyle from "../../../assets/jss/material-kit-react/views/landingPageSections/workStyle";
-import Grid from '@material-ui/core/Grid';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Input from '@material-ui/core/Input';
 import imagesStyles from "../../../assets/jss/material-kit-react/imagesStyles";
 import consolePageStyle from "../../../assets/jss/material-kit-react/views/consolePage";
 
@@ -18,8 +15,6 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "../../../components/Card/CardBody";
 import GridContainer from "../../../components/Grid/GridContainer";
 import GridItem from "../../../components/Grid/GridItem";
-import Typography from "@material-ui/core/Typography";
-import CustomLinearProgress from "../../../components/CustomLinearProgress/CustomLinearProgress";
 import TextField from "@material-ui/core/TextField";
 import classNames from "classnames";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -36,7 +31,28 @@ const style = {
 
 class IssueAssetSection extends React.Component {
     state = {
-        projects: []
+        projects: [],
+        name:'',
+        description:'',
+        iconUrl:'',
+        supply:'',
+    };
+
+    createAsset (){
+        console.log('run')
+        let payload = {
+            assetName: this.state.name,
+            assetDescription:this.state.description,
+            assetIconUrl:this.state.iconUrl,
+            assetSupply:this.state.supply,
+        }
+        apiClient.kodeBoxPost(`console/create/asset`, payload, res =>{
+
+        });
+    }
+
+    handleChange = prop => event => {
+        this.setState({[prop]: event.target.value});
     };
 
     // componentDidMount() {
@@ -47,39 +63,33 @@ class IssueAssetSection extends React.Component {
 
     render() {
         const {classes} = this.props;
+        const {name, description, iconUrl, supply} = this.state
         return (
             <div className={classes.section}>
                 <h2 className={classes.title}>Issue Asset</h2>
-                {/*// <div className={classes.assetHead}>*/}
-                {/*//     <Grid container spacing={2}>*/}
-                {/*//         <Grid item>*/}
-                {/*            <ButtonBase className={classes.image}>*/}
-                {/*                <input className={classes.assetImage} alt="프로젝트 이미지"/>*/}
-                {/*            </ButtonBase>*/}
-                {/*        </Grid>*/}
-                {/*        <Grid item xs={12} sm container>*/}
-                {/*            <Grid item xs container direction="column" spacing={2}>*/}
-                {/*                <Grid item xs>*/}
-                {/*                    /!*Asset Name*!/*/}
-                {/*                    <Input tmlFor="my-inputh" className={classes.assetName}>Asset name here</Input>*/}
-                {/*                </Grid>*/}
-                {/*                <Grid item xs>*/}
-                {/*                    /!*Asset description*!/*/}
-                {/*                </Grid>*/}
-                {/*            </Grid>*/}
-                {/*        </Grid>*/}
-                {/*    </Grid>*/}
-                {/*</div>*/}
                 <Card>
                     <CardBody>
                         <GridContainer>
-                            <GridItem xs={12} md={6}>
-                                <input
-                                    style={{width: "100%", display: "block", height: "auto"}}
-                                    alt="Card-img-cap"
+                            <GridItem xs={12} md={12}>
+                                Icon URL
+                                <TextField
+                                    variant="outlined"
+                                    fullWidth
+                                    className={classNames(
+                                        classes.margin,
+                                        classes.textField
+                                    )}
+                                    value={iconUrl}
+                                    onChange={this.handleChange("iconUrl")}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment
+                                                style={{textAlign: "left"}}
+                                                position="start"
+                                            />
+                                        )
+                                    }}
                                 />
-                            </GridItem>
-                            <GridItem xs={12} md={6}>
                                 Asset Name
                                 <TextField
                                     variant="outlined"
@@ -88,6 +98,8 @@ class IssueAssetSection extends React.Component {
                                         classes.margin,
                                         classes.textField
                                     )}
+                                    value={name}
+                                    onChange={this.handleChange("name")}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment
@@ -105,6 +117,8 @@ class IssueAssetSection extends React.Component {
                                         classes.margin,
                                         classes.textField
                                     )}
+                                    value={description}
+                                    onChange={this.handleChange("description")}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment
@@ -122,7 +136,8 @@ class IssueAssetSection extends React.Component {
                                         classes.margin,
                                         classes.textField
                                     )}
-                                    type="number"
+                                    value={supply}
+                                    onChange={this.handleChange("supply")}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment
@@ -137,7 +152,9 @@ class IssueAssetSection extends React.Component {
                                     size="large"
                                     color="primary"
                                     className={classes.button}
-                                    onClick={this.handleClickOpen}
+                                    onClick={(e) => {
+                                        this.createAsset()
+                                    }}
                                 >
                                     Create
                                 </Button>
@@ -145,19 +162,6 @@ class IssueAssetSection extends React.Component {
                         </GridContainer>
                     </CardBody>
                 </Card>
-                <div>
-                    todo
-                    {/*total supply, input*/}
-                    {/*soft cap, input check box*/}
-                    {/*hard cap input*/}
-                    {/*raise fund in, check box*/}
-                    {/*campaign end date, date input*/}
-                    {/*privatefundraising radio*/}
-                    {/*attachment, file input*/}
-
-                    {/*issuebutton*/}
-
-                </div>
             </div>
 
         );

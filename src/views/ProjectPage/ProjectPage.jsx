@@ -19,7 +19,7 @@ class ProjectPage extends React.Component {
   componentDidMount() {
     const { match } = this.props;
     apiClient.kodeBox(
-      `assets/${match.params.projectId}`,
+      `console/get/asset/${match.params.projectId}`,
       null,
       res => {
         this.setState({ project: res });
@@ -51,8 +51,8 @@ class ProjectPage extends React.Component {
               <Fragment>
                 <ContentSection project={project} />
                 <MiddleInformationSection project={project} />
-                <InvestorSection project={project} />
-                <VotingSection project={project} />
+                {/*<InvestorSection project={project} />*/}
+                {/*<VotingSection project={project} />*/}
               </Fragment>
             ) : (
               undefined

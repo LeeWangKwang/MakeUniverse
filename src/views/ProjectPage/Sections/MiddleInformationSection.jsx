@@ -105,7 +105,7 @@ class MiddleInformationSection extends React.Component {
           <Typography variant="h5" component="h3" className={classes.info}>
             Description
           </Typography>
-          <Typography className={classes.infoText}>{project.scheme.metadata.description}</Typography>
+          <Typography className={classes.infoText}>{project[0].assetDescription}</Typography>
         </div>
         <div className={classes.infoWrap}>
           <Typography variant="h5" component="h3" className={classes.info}>
@@ -134,24 +134,24 @@ class MiddleInformationSection extends React.Component {
           <Typography variant="h5" component="h3" className={classes.info}>
             Total Supply
           </Typography>
-          <Typography className={classes.infoText}>{parseInt(project.scheme.supply, 16)}</Typography>
+          <Typography className={classes.infoText}>{project[0].assetSupply}</Typography>
         </div>
-        <div className={classes.infoWrap}>
-          <Typography variant="h5" component="h3" className={classes.info}>
-            Exchange Rate
-          </Typography>
-          <Typography className={classes.infoText}>{`${project.fundingAssets[0].ratio} ${project.fundingAssets[0].assetName} = 1 Token`}</Typography>
-        </div>
-        <div className={classes.infoWrap}>
-          <Typography variant="h5" component="h3" className={classes.info}>
-            Attachments
-          </Typography>
-          {project.scheme.metadata.attachments ? project.scheme.metadata.attachments.map((a, i) => {
-            return (
-                <a href={a.url}>{a.name}</a>
-            )
-          }) : undefined}
-        </div>
+        {/*<div className={classes.infoWrap}>*/}
+        {/*  <Typography variant="h5" component="h3" className={classes.info}>*/}
+        {/*    Exchange Rate*/}
+        {/*  </Typography>*/}
+        {/*  <Typography className={classes.infoText}>{`${project.fundingAssets[0].ratio} ${project.fundingAssets[0].assetName} = 1 Token`}</Typography>*/}
+        {/*</div>*/}
+        {/*<div className={classes.infoWrap}>*/}
+        {/*  <Typography variant="h5" component="h3" className={classes.info}>*/}
+        {/*    Attachments*/}
+        {/*  </Typography>*/}
+        {/*  {project.scheme.metadata.attachments ? project.scheme.metadata.attachments.map((a, i) => {*/}
+        {/*    return (*/}
+        {/*        <a href={a.url}>{a.name}</a>*/}
+        {/*    )*/}
+        {/*  }) : undefined}*/}
+        {/*</div>*/}
         <div className={classes.infoWrap}>
           <Typography variant="h5" component="h3" className={classes.info}>
             Wallet

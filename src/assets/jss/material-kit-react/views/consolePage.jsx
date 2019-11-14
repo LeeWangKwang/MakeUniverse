@@ -18,8 +18,12 @@ const consolePageStyle = {
         borderTopRightRadius: "calc(.25rem - 1px)"
     },
 
-    button:{
-        float:"right"
+    button: {
+        float: "right",
+    },
+    assetList:{
+        widths:"200px",
+        float: "left"
     }
 
 };

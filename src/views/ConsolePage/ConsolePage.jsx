@@ -10,67 +10,50 @@ import NewHeaderLinks from "../../components/Header/NewHeaderLinks";
 import landingPageStyle from "../../assets/jss/material-kit-react/views/landingPage";
 
 import IssueAssetSection from "./Sections/IssueAssetSection";
-
+import ListItem from "@material-ui/core/ListItem";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import {Divider} from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItemText from "@material-ui/core/ListItemText";
+import AssetDetailSection from "./Sections/AssetDetailSection";
+import * as apiClient from "../../apiClient";
 
 class ConsolePage extends React.Component {
-  render() {
-    const { classes, ...rest } = this.props;
 
-    const dashboardRoutes = [];
-    return (
-      <div>
-        <Header
-          routes={dashboardRoutes}
-          brand="makeUNIVERSE"
-          rightLinks={<NewHeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: "white"
-          }}
-          {...rest}
-        />
-        {/*<Parallax filter image={require("assets/img/landing-bg.jpg")}>*/}
-        {/*  <div className={classes.container}>*/}
-        {/*    <GridContainer>*/}
-        {/*      <GridItem xs={12} sm={12} md={6}>*/}
-        {/*        <h1 className={classes.title}>BTS NEW ALBUM</h1>*/}
-        {/*        <h4>*/}
-        {/*          You’ve attended their concerts. Streamed countless hours of their music. Clicked a million times for a chance to buy an A.R.M.Y Bomb.*/}
-        {/*          Now, join millions of A.R.M.Y worldwide and become an official co-owner of BTS songs and albums!*/}
-        {/*          Receive exclusive membership benefits as well as rights to vote on important BTS-related issues!*/}
-        {/*        </h4>*/}
-        {/*        <br />*/}
-        {/*      </GridItem>*/}
-        {/*    </GridContainer>*/}
-        {/*  </div>*/}
-        {/*</Parallax>*/}
+    render() {
 
-        <div className={classNames(classes.main)}>
-          <div className={classes.container}>
-              <IssueAssetSection />
-          </div>
-        </div>
+        const {classes, ...rest} = this.props;
 
-        {/*<div>*/}
-        {/*  <ProductSection />*/}
-        {/*</div>*/}
+        const dashboardRoutes = [];
+        return (
+            <div>
+                <Header
+                    routes={dashboardRoutes}
+                    brand="makeUNIVERSE"
+                    rightLinks={<NewHeaderLinks/>}
+                    fixed
+                    changeColorOnScroll={{
+                        height: 400,
+                        color: "white"
+                    }}
+                    {...rest}
+                />
 
-        {/*<div className={classNames(classes.main)}>*/}
-        {/*  <PartnerSection />*/}
-        {/*  /!* <TeamSection /> *!/*/}
-        {/*</div>*/}
 
-        {/*<div className={classNames(classes.main)}>*/}
-        {/*  <div className={classes.container}>*/}
-        {/*    <ContactUsSection />*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+                <div className={classNames(classes.main)}>
+                    <div className={classes.container}>
+                        {/*todo 페이지 선택*/}
+                        <IssueAssetSection/>
+                        {/*<AssetDetailSection/>*/}
+                    </div>
+                </div>
 
-        <Footer />
-      </div>
-    );
-  }
+
+                <Footer/>
+            </div>
+        );
+    }
 }
 
 export default withStyles(landingPageStyle)(ConsolePage);
